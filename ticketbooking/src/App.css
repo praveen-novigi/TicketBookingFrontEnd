@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  width: 100vw;
+}
+/*landing page*/
+.landBG{
+  width: 100vw;
+  min-height: 100vh;
+  height: 100vmax;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.landOPAC{
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  min-height: 100vh;
+  height: 100vmax;
+  width: 100vw;
+  background-color: black;
+  opacity: 0.63;
+}
+.landContentBox{
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  min-height: 100vh;
+  height: 100vmax;
+  width: 100vw;
+}
+.landLOGO{
+  width: 59.28267vw;
+  height: 9.849vmax;
+  margin-top: 36.5763vmax;
+  margin-left: 20.5733vw;
+}
+.landSIGNUP{
+  width: 80.533vw;
+  height: 6.15763vmax;
+  border-radius: 30px;
+  border: none;
+  background: #ffffff;
+  color: #ff0100;
+  font-family: Roboto;
+  font-size: 16px;
+  margin-top: 28.944158vmax;
+  margin-left: 9.6vw;
+}
+.landSIGNIN{
+  width: 80.533vw;
+  height: 6.15763vmax;
+  border-radius: 30px;
+  border: none;
+  background: #ff0100;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 16px;
+  margin-top: 1.3891625vmax;
+  margin-left: 9.6vw;
+}
