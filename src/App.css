@@ -8,8 +8,7 @@
 /*landing page*/
 .landBG{
   width: 100vw;
-  min-height: 100vh;
-  height: 100vmax;
+  height: 100vh;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -19,7 +18,6 @@
   top: 0;
   z-index: 2;
   min-height: 100vh;
-  height: 100vmax;
   width: 100vw;
   background-color: black;
   opacity: 0.63;
@@ -29,36 +27,115 @@
   top: 0;
   z-index: 3;
   min-height: 100vh;
-  height: 100vmax;
   width: 100vw;
 }
 .landLOGO{
   width: 59.28267vw;
-  height: 9.849vmax;
-  margin-top: 36.5763vmax;
+  height: 9.849vh;
+  margin-top: 36.5763vh;
   margin-left: 20.5733vw;
 }
 .landSIGNUP{
-  width: 80.533vw;
-  height: 6.15763vmax;
+  width: 80.533vmin;
+  height: 6.15763vh;
   border-radius: 30px;
   border: none;
   background: #ffffff;
   color: #ff0100;
   font-family: Roboto;
   font-size: 16px;
-  margin-top: 28.944158vmax;
+  margin-top: 28.944158vh;
   margin-left: 9.6vw;
 }
 .landSIGNIN{
-  width: 80.533vw;
-  height: 6.15763vmax;
+  width: 80.533vmin;
+  height: 6.15763vh;
   border-radius: 30px;
   border: none;
   background: #ff0100;
   color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
-  margin-top: 1.3891625vmax;
+  margin-top: 1.3891625vh;
   margin-left: 9.6vw;
+}
+/*Sign Up and Sign In Page*/
+.signUpIn{
+  margin-left: 9.6vw;
+  margin-top: 13.423vh;
+  margin-bottom: 3.5714vh;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  font-family: Roboto;
+}
+.signUpInBox{
+  border-radius: 50px 0 0 0;
+  background-color: white;
+  z-index: 3;
+  min-height: 77.0935vmax;
+  padding-left: 9.6vw;
+}
+.whiteBoxContent{
+  padding-top: 7.38916vmax;
+}
+.socialEntry{
+  display: grid;
+  grid-auto-columns: 1fr 1fr 1fr 1fr;
+  height: 8.374384vh;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.709359vmax;
+}
+.socialBox{
+  margin-right: 2.667vw;
+}
+.g1{
+  grid-column: 1/2;
+}
+.g2{
+  grid-column: 2/3;
+}
+.g3{
+  grid-column: 3/4;
+}
+.g4{
+  grid-column: 4/5;
+}
+.signEmail{
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 3.94088vmax;
+  font-family: Roboto;
+  color: #ff0100;
+}
+.signUpInButton{
+  width: 80.53vw;
+  height: 6.1576vmax;
+  border-radius: 50px;
+  background-color: #ff0100;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 16px;
+  border: none;
+  margin-bottom: 3.69458vmax;
+}
+.TermsandCond{
+  width: 80.53vw;
+  text-align: center;
+  color: #727271;
+  font-size: 16px;
+  font-family: Roboto;
+  margin-bottom: 2.21674vmax;
+}
+.loginRedirect{
+  width: 80.53vw;
+  text-align: center;
+  font-size: 16px;
+  font-family: Roboto;
+  color: #727271;
+}
+.login{
+  font-weight: bold;
+  color: #ff0100;
 }

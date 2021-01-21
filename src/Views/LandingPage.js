@@ -14,8 +14,8 @@ function LandingPage() {
         <div className="landOPAC"/>
         <div className="landContentBox">
             <img className="landLOGO" src={logo}/>
-            <button className="landSIGNUP" onClick={() => { history.push("/signin"); }}>Sign Up</button>
-            <button className="landSIGNIN" onClick={() => { history.push("/signup"); }}>Sign In</button>
+            <button className="landSIGNUP" onClick={() => { history.push("/sign/up"); }}>Sign Up</button>
+            <button className="landSIGNIN" onClick={() => { history.push("/sign/in"); }}>Sign In</button>
         </div>
     </div>
   );
