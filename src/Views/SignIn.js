@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     },
     textField: {
       width: '80.53vw',
-      height: '6.1576vmax',
       marginBottom:'1.84729vmax',
       borderRadius: '50px'
     },
