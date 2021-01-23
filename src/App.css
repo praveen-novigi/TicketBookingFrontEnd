@@ -263,6 +263,7 @@
   align-self: center;
 }
 .airplane{
+  width: 5.33066vw;
   margin: 30%;
   justify-self: center;
   align-self: center;
@@ -293,6 +294,7 @@
   font: normal normal bold 13px/18px Roboto;
 }
 .question{
+  width: 3.664vw;
   margin: 30%;
   justify-self: center;
   align-self: center;
@@ -314,6 +316,7 @@
   align-self: center;
 }
 .suitcase{
+  width: 5.02666vw;
   margin: 30%;
   justify-self: center;
   align-self: center;
@@ -374,7 +377,7 @@
 }
 .UserchatGrid{
   margin-left: 15.7vw;
-  width:60.266vw;
+  /* width:60.266vw; */
   display: grid;
   /* grid-template-columns: 177px 49px; */
   margin-bottom: 1.47783251vh;
@@ -408,4 +411,9 @@
   opacity: 1;
   grid-column: 1/2;
   grid-row: 2/3;
+}
+@media (min-width : 768px){
+  .chatBox{
+    height: 74.502463vmax;
+  }
 }
