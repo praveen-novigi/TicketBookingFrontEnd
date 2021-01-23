@@ -8,7 +8,7 @@
 /*landing page*/
 .landBG{
   width: 100vw;
-  height: 100vh;
+  height: 100vmax;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -17,7 +17,7 @@
   position: absolute;
   top: 0;
   z-index: 2;
-  min-height: 100vh;
+  min-height: 100vmax;
   width: 100vw;
   background-color: black;
   opacity: 0.63;
@@ -26,44 +26,44 @@
   position: absolute;
   top: 0;
   z-index: 3;
-  min-height: 100vh;
+  min-height: 100vmax;
   width: 100vw;
 }
 .landLOGO{
   width: 59.28267vw;
-  height: 9.849vh;
-  margin-top: 36.5763vh;
+  height: 9.849vmax;
+  margin-top: 36.5763vmax;
   margin-left: 20.5733vw;
 }
 .landSIGNUP{
   width: 80.533vmin;
-  height: 6.15763vh;
+  height: 6.15763vmax;
   border-radius: 30px;
   border: none;
   background: #ffffff;
   color: #ff0100;
   font-family: Roboto;
   font-size: 16px;
-  margin-top: 28.944158vh;
+  margin-top: 28.944158vmax;
   margin-left: 9.6vw;
 }
 .landSIGNIN{
   width: 80.533vmin;
-  height: 6.15763vh;
+  height: 6.15763vmax;
   border-radius: 30px;
   border: none;
   background: #ff0100;
   color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
-  margin-top: 1.3891625vh;
+  margin-top: 1.3891625vmax;
   margin-left: 9.6vw;
 }
 /*Sign Up and Sign In Page*/
 .signUpIn{
   margin-left: 9.6vw;
-  margin-top: 13.423vh;
-  margin-bottom: 3.5714vh;
+  margin-top: 13.423vmax;
+  margin-bottom: 3.5714vmax;
   font-size: 36px;
   font-weight: bold;
   color: white;
@@ -82,7 +82,7 @@
 .socialEntry{
   display: grid;
   grid-auto-columns: 1fr 1fr 1fr 1fr;
-  height: 8.374384vh;
+  height: 8.374384vmax;
   align-items: center;
   justify-content: center;
   margin-bottom: 2.709359vmax;
@@ -141,8 +141,8 @@
 }
 /*ChatBox*/
 .topBar{
-  margin-top: 2.45305vh;
-  height: 7.38916256vh;
+  margin-top: 2.45305vmax;
+  height: 7.38916256vmax;
   width: 100%;
   display: grid;
   grid-template-columns: auto 34.667vw;
@@ -157,7 +157,7 @@
 }
 .topBarBox{
   width: 35.733vw;
-  height: 7.38916vh;
+  height: 7.38916vmax;
   grid-column: 2/3;
   background: #FFFFFF;
   border-radius: 60px 0  0 60px;
@@ -179,7 +179,7 @@
   justify-self: center;
 }
 .greet{
-  margin-top: 8.743842364532vh;
+  margin-top: 8.743842364532vmax;
   margin-left: 9.6vw;
   color: #ffffff;
   font-size: 16px;
@@ -189,16 +189,16 @@
   border-radius: 50px 0 0 0;
   background-color: white;
   z-index: 4;
-  height: 66.50246305vh;
+  height: 67.50246305vmax;
   padding-left: 9.6vw;
-  margin-top: 2.463054vh;
+  margin-top: 2.463054vmax;
 }
 .scrollBox{
-  max-height: 55.6798vh;
-  /* 79.6798vh; */
+  max-height: 55.6798vmax;
+  /* 79.6798vmax; */
   overflow: visible;
   overflow-y: scroll;
-  bottom: 10.96vh;
+  bottom: 10.96vmax;
   position: fixed;
   display:flex;
   flex-direction:column-reverse;
@@ -211,8 +211,8 @@
   display: grid;
   grid-template-columns: 12.3073vw 46.66vw 20.267vw;
   grid-template-rows: 1fr auto;
-  row-gap: 1.2315vh;
-  margin-bottom: 1.4778vh;
+  row-gap: 1.2315vmax;
+  margin-bottom: 1.4778vmax;
 }
 .botDPGrid{
   grid-row: 1/ span 2;
@@ -227,7 +227,7 @@
   grid-row: 1/2;
   border-radius: 20px 20px 20px 0;
   background: #F5F5F5 ;
-  padding: 1.60098vh 3.4667vw 0.738916vh 4vw;
+  padding: 1.60098vmax 3.4667vw 0.738916vmax 4vw;
   opacity: 1;
   font-size: 14px;
   font-family: Roboto;
@@ -239,7 +239,7 @@
 }
 .selectionGrid{
   width: 66.933vw;
-  height: 11.453201970vh;
+  height: 11.453201970vmax;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #ffffff;
@@ -336,7 +336,7 @@
 }
 .typeLayout{
   width: 75.2vw;
-  height: 6.77339901vh;
+  height: 6.77339901vmax;
   margin-left: 9.6vw;
   /* height: max-content; */
   padding: 8px 10px 8px 10px;
@@ -345,7 +345,7 @@
   grid-template-columns: 56vw 9.066vw 10.133333vw;
   background: #ffffff;
   box-shadow: 0px 0px 15px #00000026;
-  margin-bottom: 1.47783251vh;
+  margin-bottom: 1.47783251vmax;
   position: fixed;
   bottom: 0;
   z-index: 5;
@@ -380,7 +380,7 @@
   /* width:60.266vw; */
   display: grid;
   /* grid-template-columns: 177px 49px; */
-  margin-bottom: 1.47783251vh;
+  margin-bottom: 1.47783251vmax;
 }
 .UserDPGrid{
   width:10.133vw;
@@ -397,7 +397,7 @@
   grid-row: 1/2;
   border-radius: 20px 20px 0 20px;
   background: #F5F5F5 ;
-  padding: 1.60098vh 4vw 0.738916vh 3.4667vw;
+  padding: 1.60098vmax 4vw 0.738916vmax 3.4667vw;
   opacity: 1;
   font-size: 14px;
   font-family: Roboto;
