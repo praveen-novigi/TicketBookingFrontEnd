@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import menu from '../assests/images/menu.svg';
 import homeActive from '../assests/images/homeActive.svg';
@@ -8,8 +8,22 @@ import microphone from '../assests/images/microphone.svg';
 import sendLogo from '../assests/images/airplaneWhite.svg';
 import BotChatBubble from '../Components/BotChatBubble';
 import UserChatBubble from '../Components/UserChatBubble';
+import {useSelector} from 'react-redux';
+import debounce from "lodash/debounce";
+import TypingBubble from '../Components/Typing Bubble';
 
 function ChatScreen() {
+    const Service = useSelector(state => state.todo);
+    const [message, setMessage]=useState("");
+    const [isTyping, setIsTyping]=useState(false)
+    const handleTyping =debounce(() => {
+        setIsTyping(false);
+      }, 1000);
+    const handleChange=(e)=>{
+        setMessage(e.target.value);
+        setIsTyping(true);
+        handleTyping()
+    }
   return (
     <div className="container">
         <div className="landBG">
@@ -30,14 +44,20 @@ function ChatScreen() {
                 <p style={{fontSize:"36px",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
             </div>
-            <div className="chatBox" style={{}}>
-                <div className="scrollBox">
+            <div className="chatBox" style={Service === "selected"?{height:"88.3vmax",marginTop:"-16.536946vmax"}:{}}>
+                <div className="scrollBox" style={Service === "selected"?{maxHeight:"74.6798vmax"}:{}}>
+                    {isTyping && <TypingBubble/>}
                     <UserChatBubble/>
                     <BotChatBubble/>
                 </div>
             </div>
             <div className="typeLayout">
-                        <input className="inputBox" type="text" value="" placeholder="Type your message..."/>
+                        <input className="inputBox" 
+                        type="text" 
+                        value={message} 
+                        placeholder="Type your message..."
+                        onChange={handleChange}
+                        />
                         <div className="recordButton">
                             <img src={microphone} className="recordLogo"/>
                         </div>

@@ -128,7 +128,7 @@ function SignIn() {
                     />
                     </FormControl>
                 </div>
-                <button className="signUpInButton" onClick={() => { history.push("/schat"); }}>Log In</button>
+                <button className="signUpInButton" onClick={() => { history.push("/chat"); }}>Log In</button>
                 <div className="loginRedirect">
                         <p>New to Novigi? <span className="login" onClick={() => { history.push("/sign/up"); }}>Sign Up</span></p>
                 </div>

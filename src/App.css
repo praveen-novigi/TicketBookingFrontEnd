@@ -377,7 +377,14 @@
 }
 .UserchatGrid{
   margin-left: 15.7vw;
-  /* width:60.266vw; */
+  width:60.266vw;
+  display: grid;
+  /* grid-template-columns: 177px 49px; */
+  margin-bottom: 1.47783251vmax;
+}
+.UserchatGridTyping{
+  margin-left: 42.7vw;
+  width:36.266vw;
   display: grid;
   /* grid-template-columns: 177px 49px; */
   margin-bottom: 1.47783251vmax;
@@ -402,6 +409,18 @@
   font-size: 14px;
   font-family: Roboto;
 }
+.UserchatBubbleTyping{
+  box-shadow: 0px 0px 15px #00000026;
+  width: 18.667vw;
+  height: 3vmax;
+  grid-row: 1/2;
+  border-radius: 20px 20px 0 20px;
+  background: #F5F5F5 ;
+  padding: 1.60098vmax 4vw 0.738916vmax 3.4667vw;
+  opacity: 1;
+  font-size: 14px;
+  font-family: Roboto;
+}
 .Usertime{
   margin-top: 0%;
   text-align: right;
@@ -412,6 +431,50 @@
   grid-column: 1/2;
   grid-row: 2/3;
 }
+
+.typing {
+  height: 2em;
+  position: relative;
+  padding: 10px;
+  margin-left: 5px;
+  border-radius: 20px;
+}
+
+.typing__dot {
+  float: left;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background: #8d8c91;
+  border-radius: 50%;
+  opacity: 0;
+  animation: loadingFade 1s infinite;
+}
+
+.typing__dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing__dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing__dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loadingFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (min-width : 768px){
   .chatBox{
     height: 74.502463vmax;
