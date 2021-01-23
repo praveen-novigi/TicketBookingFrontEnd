@@ -15,7 +15,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { useHistory, useState } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
