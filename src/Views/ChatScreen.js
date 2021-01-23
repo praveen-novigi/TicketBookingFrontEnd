@@ -18,7 +18,7 @@ function ChatScreen() {
     const [isTyping, setIsTyping]=useState(false)
     const handleTyping =debounce(() => {
         setIsTyping(false);
-      }, 1000);
+      },5000);
     const handleChange=(e)=>{
         setMessage(e.target.value);
         setIsTyping(true);
