@@ -102,7 +102,7 @@ function SignIn() {
                         variant="outlined" 
                         type="text" 
                         value={values.emailId}
-                        onChange={handleChange('password')}
+                        onChange={handleChange('emailId')}
                     />
                     <FormControl className={clsx(classes.margin, classes.textField, classes.root)} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
