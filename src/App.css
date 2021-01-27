@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  position: static!important;
+  position: static;
 }
 .container{
   width: 100vw;
@@ -193,6 +193,7 @@
   height: 67.50246305vh;
   padding-left: 9.6vw;
   margin-top: 2.463054vh;
+  overflow: hidden;
 }
 .scrollBox{
   max-height: 55.6798vh;
