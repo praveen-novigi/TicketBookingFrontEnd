@@ -11,8 +11,10 @@ import UserChatBubble from '../Components/UserChatBubble';
 import {useSelector} from 'react-redux';
 import debounce from "lodash/debounce";
 import TypingBubble from '../Components/Typing Bubble';
+import FlightList from '../Components/FlightList';
 
 function ChatScreen() {
+    const opts=["Bookings","Cancellation","Seats","Meals","Web-Checkin","Baggage"]
     const Service = useSelector(state => state.todo);
     const [message, setMessage]=useState("");
     const [isTyping, setIsTyping]=useState(false)
@@ -40,15 +42,34 @@ function ChatScreen() {
                     </div>
                 </div>
             </div>
-            <div className="greet">
+            {!(Service.selected) && (<div className="greet">
                 <p style={{fontSize:"36px",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
-            </div>
-            <div className="chatBox" style={Service === "selected"?{height:"88.3vmax",marginTop:"-16.536946vmax"}:{}}>
-                <div className="scrollBox" style={Service === "selected"?{maxHeight:"74.6798vmax"}:{}}>
+            </div>)}
+            <div className="chatBox" style={Service.selected ?{height:"88.3vmax",marginTop:"1.4631vmax"}:{}}>
+                <div className="scrollBox" style={Service.selected ?{maxHeight:"74.6798vmax"}:{}}>
                     {isTyping && <TypingBubble/>}
-                    <UserChatBubble/>
-                    <BotChatBubble/>
+                    {Service.selected &&(<>
+                    <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="6" message="What else may I assist you with further?"/>
+                    <UserChatBubble message={"I would like to check extra baggage fares."}/>
+                    <BotChatBubble opt="3" options={opts} message={"Passengers can do web check-In until 4 hour prior to the departure of their flight. What else may I assist you with further?"}/>
+                    <UserChatBubble message={"What is the latest by which I can do web check-in?"}/>
+                    <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="5" Blayout={true} message="What else may I assist you with further?"/>
+                    <UserChatBubble message={"I would like to check out the meals and fares."}/>
+                    <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
+                    <BotChatBubble seatMap={true} opt="4" message={`The Fares for Seat Selection are as follows:`}/>
+                    <UserChatBubble message={"I would like to know fares for seat selection."}/>
+                    <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="4" message={`Sure. Bookings can be made before 1 hour to the schedule departure. How may I help with you with further?`}/>
+                    <UserChatBubble message="I would like to know the cancellation charges for Air Asia"/>
+                    <BotChatBubble opt="3" options={opts} message={`Sure. Bookings can be made before 1 hour to the schedule departure. How may I help with you with further?`}/>
+                    <UserChatBubble message="What is the latest by which you can book a ticket?"/>
+                    <BotChatBubble opt="3" options={opts} message={`Thank you for choosing Air Asia Airlines. How may I help with you with further?`}/>
+                    <BotChatBubble opt="2" message="Which flight do you have your query with?"/>
+                    <UserChatBubble message="I want to enquire about a flight"/></>)}
+                    <BotChatBubble opt="1" message="Hi Avni, What can I help you with?"/>
                 </div>
             </div>
             <div className="typeLayout">

@@ -14,7 +14,10 @@ function OptionSelection() {
     <div className="selectionGrid">
         <div className="airplaneMainBox" style={select === 'airplane' ?{background:"#ff0100",color:"white"}:{}} 
         onClick={()=>{
-            dispatch(selectTodo("selected"))
+            dispatch(selectTodo({
+                selected:true,
+                service:"Flights"
+            }))
             setSelect("airplane")}}>
             <div className="airplaneBox" style={select === 'airplane' ?{background:"white"}:{}}>
                 <img src={airplane} className="airplane"/>
@@ -23,7 +26,10 @@ function OptionSelection() {
         </div>
         <div className="questionMainBox" style={select === 'question' ?{background:"#ff0100",color:"white"}:{}} 
         onClick={()=>{
-            dispatch(selectTodo("selected"))
+            dispatch(selectTodo({
+                selected:true,
+                service:"FAQs"
+            }))
             setSelect("question")}}>
             <div className="questionBox" style={select === 'question' ?{background:"white"}:{}}>
                 <img src={question} className="question"/>
@@ -32,7 +38,10 @@ function OptionSelection() {
         </div>
         <div  className="suitcaseMainBox" style={select === 'suitcase' ?{background:"#ff0100",color:"white"}:{}}  
         onClick={()=>{
-            dispatch(selectTodo("selected"))
+            dispatch(selectTodo({
+                selected:true,
+                service:"Bookings"
+            }))
             setSelect("suitcase")}}>
             <div  className="suitcaseBox" style={select === 'suitcase' ?{background:"white"}:{}}>
                 <img src={suitcase} className="suitcase"/>

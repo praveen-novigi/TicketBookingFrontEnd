@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import User from '../assests/images/user.svg';
 
-function UserChatBubble() {
+function UserChatBubble(props) {
   return (
     <div className="UserchatGrid">
         {/* Chat Box */}
@@ -10,7 +10,7 @@ function UserChatBubble() {
             <img src={User} className="UserDP"/>
         </div>
         <div className="UserchatBubble">
-        I want to enquire about a flight
+        {props.message}
         </div>
         
         <p className="Usertime">16:54</p>
