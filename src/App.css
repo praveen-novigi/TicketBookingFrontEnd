@@ -635,7 +635,7 @@ outline: none!important;
 }
 .eachFlight{
   display: grid;
-  grid-template-columns: 1fr 8%;
+  grid-template-columns: 1fr 20%;
   padding: 1.1083743vh 0 1.1083743vh 20.2667vw;
   border-bottom: 1px grey solid;
   text-align: left;
