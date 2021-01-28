@@ -137,7 +137,7 @@ function SignUp() {
                     />
                     </FormControl>
                 </div>
-                <button className="signUpInButton" onClick={() => { history.push("/chat"); }}>Create Your Account</button>
+                <button className="signUpInButton" style={{padding:"1.7857vh 20.8vw"}} onClick={() => { history.push("/chat"); }}>Create Your Account</button>
                 <div className="TermsandCond">
                     <p>By signing up, you agree with our Terms of </p>
                     <p>Services and Privacy Policy</p>

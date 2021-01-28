@@ -83,7 +83,7 @@
 .socialEntry{
   display: grid;
   grid-auto-columns: 1fr 1fr 1fr 1fr;
-  height: 8.374384vh;
+  height: max-content;
   align-items: center;
   justify-content: center;
   margin-bottom: 2.709359vh;
@@ -111,8 +111,8 @@
   color: #ff0100;
 }
 .signUpInButton{
-  width: 80.53vw;
-  height: 6.1576vh;
+  min-width: 80.53vw;
+  padding: 1.7857vh 34.4vw;
   border-radius: 50px;
   background-color: #ff0100;
   color: #ffffff;
@@ -180,6 +180,7 @@
   justify-self: center;
 }
 .greet{
+  max-height: 12.8384vh;
   margin-top: 8.743842364532vh;
   margin-left: 9.6vw;
   color: #ffffff;
@@ -196,7 +197,7 @@
   overflow: hidden;
 }
 .scrollBox{
-  max-height: 55.6798vh;
+  height: 55.6798vh;
   /* 79.6798vh; */
   overflow: visible;
   overflow-y: scroll;
@@ -244,8 +245,6 @@
   grid-column: 1/ span 3;
 }
 .selectionGrid{
-  width: 66.933vw;
-  height: 11.453201970vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #ffffff;
@@ -253,6 +252,7 @@
   box-shadow: 0px 0px 10px #00000021;
 }
 .airplaneMainBox{
+  padding: 1.35vh 3.33vw;
   background: #ffffff;
   grid-column: 1/2;
   display: grid;
@@ -280,6 +280,7 @@
   font: normal normal bold 13px/18px Roboto;
 }
 .questionMainBox{
+  padding: 1.35vh 3.33vw;
   background: #ffffff;
   grid-column: 2/3;
   display: grid;
@@ -306,6 +307,7 @@
   align-self: center;
 }
 .suitcaseMainBox{
+  padding: 1.35vh 3.33vw;
   background: #ffffff;
   grid-column: 3/4;
   display: grid;
@@ -342,7 +344,8 @@
 }
 .typeLayout{
   width: 75.2vw;
-  height: 6.77339901vh;
+  /* height: 6.77339901vh; */
+  min-height: 36.16px;
   margin-left: 9.6vw;
   /* height: max-content; */
   padding: 8px 10px 8px 10px;
@@ -378,8 +381,12 @@
   align-self: center;
 }
 .sendLogo{
+  width: 4.88vw;
   margin: 27%;
   transform: rotate(-45deg);
+}
+.recordLogo{
+  width: 3.88vw;
 }
 .UserchatGrid{
   margin-left: 15.7vw;
@@ -393,7 +400,7 @@
   width:36.266vw;
   display: grid;
   /* grid-template-columns: 177px 49px; */
-  margin-bottom: 1.47783251vh;
+  margin-bottom: calc(1.47783251vh + 36.16px);
 }
 .UserDPGrid{
   width:10.133vw;
@@ -417,8 +424,9 @@
 }
 .UserchatBubbleTyping{
   box-shadow: 0px 0px 15px #00000026;
-  width: 18.667vw;
+  width: 21.667vw;
   height: 3vh;
+  min-height: 22px;
   grid-row: 1/2;
   border-radius: 20px 20px 0 20px;
   background: #FFFFFF ;
@@ -439,7 +447,7 @@
 }
 
 .typing {
-  height: 2em;
+  height: max-content;
   position: relative;
   padding: 10px;
   margin-left: 5px;

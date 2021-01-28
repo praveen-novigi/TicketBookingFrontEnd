@@ -43,12 +43,12 @@ function ChatScreen() {
                 </div>
             </div>
             {!(Service.selected) && (<div className="greet">
-                <p style={{fontSize:"36px",fontFamily:"Roboto"}}>Hi, Anvi</p>
+                <p style={{fontSize:"4.4334vh",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
             </div>)}
-            <div className="chatBox" style={Service.selected ?{height:"88.3vmax",marginTop:"1.4631vmax"}:{}}>
-                <div className="scrollBox" style={Service.selected ?{maxHeight:"74.6798vmax"}:{}}>
-                    {true && <TypingBubble/>}
+            <div className="chatBox" style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}}>
+                <div className="scrollBox" style={Service.selected ?{height:"74.6798vh"}:{}}>
+                    {isTyping && <TypingBubble/>}
                     {Service.selected &&(<>
                     <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="6" message="What else may I assist you with further?"/>
