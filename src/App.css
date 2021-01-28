@@ -202,7 +202,7 @@
   overflow: visible;
   overflow-y: scroll;
   bottom: 9.96vh;
-  position: fixed;
+  /* position: fixed; */
   display:flex;
   flex-direction:column-reverse;
 }
