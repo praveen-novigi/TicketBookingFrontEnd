@@ -47,7 +47,7 @@ function ChatScreen() {
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
             </div>)}
             <div className="chatBox" style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}}>
-                <div className="scrollBox" style={Service.selected ?{height:"75.6798vh"}:{}}>
+                <div className="scrollBox" style={Service.selected ?{height:"80.6798vh"}:{}}>
                     {isTyping && <TypingBubble/>}
                     {Service.selected &&(<>
                     <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
