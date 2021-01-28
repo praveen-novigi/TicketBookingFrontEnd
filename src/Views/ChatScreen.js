@@ -48,7 +48,7 @@ function ChatScreen() {
             </div>)}
             <div className="chatBox" style={Service.selected ?{height:"88.3vmax",marginTop:"1.4631vmax"}:{}}>
                 <div className="scrollBox" style={Service.selected ?{maxHeight:"74.6798vmax"}:{}}>
-                    {isTyping && <TypingBubble/>}
+                    {true && <TypingBubble/>}
                     {Service.selected &&(<>
                     <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="6" message="What else may I assist you with further?"/>
