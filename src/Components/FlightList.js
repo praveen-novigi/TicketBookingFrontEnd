@@ -23,6 +23,7 @@ function Arrow(props) {
 
   
  function FlightList() {
+    const history = useHistory();
     const flights = [
         {
             name:"Indigo"
@@ -110,20 +111,12 @@ function Arrow(props) {
         prevArrow:<Arrow type="prev" />,
         appendDots: dots => (
             <div>
-              <button key={dots} className="viewAllFlights">View All</button>
+              <button key={dots} className="viewAllFlights" onClick={()=>history.push("/flights")}>View All</button>
             </div>
           ),
           customPaging: i => (
             i+1
           )
-        // responsive: [
-        //   {
-        //     breakpoint: 1402,
-        //     settings: {
-        //       slidesToShow: 11,
-        //     },
-        //   }
-        // ],
       };
     return (
         <div>
