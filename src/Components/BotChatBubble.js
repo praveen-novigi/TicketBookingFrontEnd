@@ -6,6 +6,9 @@ import FlightList from './FlightList';
 import MenuList from './MenuList';
 import WeightList from './WeightList';
 import TicketBooking from './TicketBooking';
+import Passengers from './Passengers';
+import SeatSelection from './SeatSelection';
+import TicketBookingFinal from './TicketBookingFinal';
 
 function BotChatBubble(props) {
   return (
@@ -46,6 +49,9 @@ function BotChatBubble(props) {
           )}
           {props.opt === "6" &&(<WeightList/>)}
           {props.opt === "7" &&(<TicketBooking/>)}
+          {props.opt === "8" &&(<Passengers/>)}
+          {props.opt === "9" &&(<SeatSelection/>)}
+          {props.opt === "10" &&(<TicketBookingFinal/>)}
         <p className="Bottime">16:54</p>
         </div>
         {props.Blayout === true &&

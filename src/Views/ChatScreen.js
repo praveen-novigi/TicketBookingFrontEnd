@@ -56,6 +56,9 @@ function ChatScreen() {
                         },Service.selected ?{height:"80.6798vh"}:{}}>
                     {isTyping && <TypingBubble/>}
                     {Service.selected &&(<>
+                    <BotChatBubble opt="10" message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="9" message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="8" message="Thank You. Please select number of passengers."/>
                     <BotChatBubble opt="7" message="What else may I assist you with further?"/>
                     <BotChatBubble opt="3" options={opts} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="6" message="What else may I assist you with further?"/>

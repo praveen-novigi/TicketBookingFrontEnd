@@ -27,10 +27,10 @@ function TicketBooking() {
     const delayEndDate= debounce(()=>{setShowEndDate(false)},1000);
     const toggleStartDate=(date)=>{
         if(showStartDate){
-            console.log(Date(date))
             setStartDate(date);
             setStartDateString(format(date, 'dd MMM yyyy', { locale: enGB }))
             delayStartDate();
+            console.log(startDateString)
         }
         if(!showStartDate){
         setShowStartDate(true);
@@ -39,9 +39,9 @@ function TicketBooking() {
     const toggleEndDate=(date)=>{
         if(showEndDate){
             console.log(date)
-            setEndDate(date)
+            if(date!==null){setEndDate(date)
             setEndDateString(format(date, 'dd MMM yyyy', { locale: enGB }))
-            delayEndDate()
+            delayEndDate()}
         }
         if(!showEndDate){
             setShowEndDate(true)
@@ -111,14 +111,14 @@ function TicketBooking() {
             </div>
         </div>}
         {showStartDate && 
-        (<div style={{textAlign:"center"}}>
+        (<div style={{textAlign:"center",  marginTop:"1.3546798vh", borderRadius:"10px", paddingTop:"1vh", boxShadow: "0px 0px 15px #00000021"}}>
             <p style={{font:"13px medium", fontFamily:"Roboto", color:"#ff0100"}}>Departure Date</p>
             <hr/>
             <DatePickerCalendar className="calender" date={startDate} onDateChange={toggleStartDate} locale={enGB} />
         </div>)
         }
             {showEndDate && (
-            <div style={{textAlign:"center", marginTop:"1.3546798vh"}}>
+            <div style={{textAlign:"center", marginTop:"1.3546798vh",  borderRadius:"10px", paddingTop:"1vh", boxShadow: "0px 0px 15px #00000021"}}>
                 <p style={{font:"13px medium", fontFamily:"Roboto", color:"#ff0100"}}>Return Date</p>
                 <hr/>
                 <DateRangePickerCalendar

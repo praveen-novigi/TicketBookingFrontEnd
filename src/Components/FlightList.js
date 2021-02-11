@@ -1,8 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import '../App.css';
-import airplane from '../assests/images/airplane.svg';
-import question from '../assests/images/question.svg';
-import suitcase from '../assests/images/suitcase.svg';
+import next from '../assests/images/whiteNextArrow.svg';
+import prev from '../assests/images/whitePrevArrow.svg';
 import { useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {selectFlight} from '../Redux/actions/flightActions';
@@ -15,8 +14,8 @@ function Arrow(props) {
     className += " arrow";
     const char = props.type === "next" ? "👉" : "👈";
     return (
-      <div className={className} onClick={props.onClick}>
-        {char}
+      <div className={className} onClick={props.onClick} style={{display:"grid"}}>
+        <img src={ props.type === "next" ? next : prev} style={{justifySelf:"center", alignSelf:"center"}}/>
       </div>
     );
   }
