@@ -1169,7 +1169,7 @@ outline: none!important;
   }
   .seatBox{
     width: 67.466vw;
-    height: 5.91133vh;
+    /* height: 5.91133vh; */
     padding: 1.84729vh 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
