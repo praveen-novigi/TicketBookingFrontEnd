@@ -4,8 +4,7 @@ import next from '../assests/images/whiteNextArrow.svg';
 import prev from '../assests/images/whitePrevArrow.svg';
 import { useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux';
-import {selectFlight} from '../Redux/actions/flightActions';
-import List from './List';
+import TicketList from './TicketList';
 import Slider from "react-slick";
 
 
@@ -21,50 +20,75 @@ function Arrow(props) {
   }
 
   
- function FlightList() {
+ function TicketSlider() {
     const history = useHistory();
-    const flights = [
-        {
-            name:"Indigo"
-        },
-        {
-            name:"Spice Jet"
-        },
-        {
-            name:"Go Air"
-        },
-        {
-            name:"Vistara"
-        },
-        {
-            name:"Air India"
-        },
-        {
-            name:"Air Asia"
-        },
-        {
-            name:"True Jet"
-        },
-        {
-            name:"Quatar Airways"
-        },
-        {
-            name:"Saudi Arabia"
-        },
-        {
-            name:"Emirates"
-        },
-        {
-            name:"Nauru Airlines"
-        },
-        {
-            name:"Singapore Airlines"
-        },
-        {
-            name:"Thai Airways"
-        }
-    ]
-    const noOfFlights=7;
+    const flights = [{
+      flightId:"UK-969",
+      flightName:"Indigo",
+      flight:"UK-970Indigo",
+      from:"Mumbai",
+      to:"Ahemdabad",
+      departureTime:"08:45",
+      arrivalTime:"18:15",
+      travelTime:"09hrs 30mins",
+      stops:true,
+      stopsname:['New Delhi'],
+      price:"12,000"
+    },
+    {
+      flightId:"UK-969",
+      flightName:"Indigo",
+      flight:"UK-970Indigo",
+      from:"Mumbai",
+      to:"Ahemdabad",
+      departureTime:"08:45",
+      arrivalTime:"18:15",
+      travelTime:"09hrs 30mins",
+      stops:true,
+      stopsname:['New Delhi'],
+      price:"12,000"
+    },
+    {
+      flightId:"UK-969",
+      flightName:"Indigo",
+      flight:"UK-970Indigo",
+      from:"Mumbai",
+      to:"Ahemdabad",
+      departureTime:"08:45",
+      arrivalTime:"18:15",
+      travelTime:"09hrs 30mins",
+      stops:true,
+      stopsname:['New Delhi'],
+      price:"12,000"
+    },
+    {
+      flightId:"UK-969",
+      flightName:"Indigo",
+      flight:"UK-970Indigo",
+      from:"Mumbai",
+      to:"Ahemdabad",
+      departureTime:"08:45",
+      arrivalTime:"18:15",
+      travelTime:"09hrs 30mins",
+      stops:true,
+      stopsname:['New Delhi'],
+      price:"12,000"
+    },
+    {
+      flightId:"UK-969",
+      flightName:"Indigo",
+      flight:"UK-970Indigo",
+      from:"Mumbai",
+      to:"Ahemdabad",
+      departureTime:"08:45",
+      arrivalTime:"18:15",
+      travelTime:"09hrs 30mins",
+      stops:true,
+      stopsname:['New Delhi'],
+      price:"12,000"
+    }
+  ]
+    const noOfFlights=3;
     const [totalFlights, setTotalFlights]=useState(flights.length);
     const [lastPage, setLastPage]=useState(flights.length % noOfFlights);
     const [noPage, setNoPage]=useState(flights.length - (flights.length % noOfFlights));
@@ -73,14 +97,17 @@ function Arrow(props) {
         for(let i=0;i<noPage;i++){
             var ar=[];
             for(let j=0;j<noOfFlights;j++){
+              console.log(flights[i*noOfFlights + j])
                 if(flights[i*noOfFlights + j] !== undefined)
+                
                     ar.push(flights[i*noOfFlights + j])
             }
             if(ar.length !== 0)
                 slider.push(ar);
         }
         var Lar=[];
-        for(let z=(noPage*noOfFlights);z<flights.length;z++){
+        for(let z=(noPage*noOfFlights);z<totalFlights;z++){
+          console.log(z)
             if(flights[z] !== undefined){
                 Lar.push(flights[z]);
                 if(z === (lastPage - 1)){
@@ -88,7 +115,7 @@ function Arrow(props) {
                 }
             }
         }
-        
+        console.log(slider)
         return slider
     }
     const list=sliderArray(flights);
@@ -110,7 +137,7 @@ function Arrow(props) {
         prevArrow:<Arrow type="prev" />,
         appendDots: dots => (
             <div>
-              <button key={dots} className="viewAllFlights" onClick={()=>history.push("/flights")}>View All</button>
+              <button key={dots} className="viewAllFlights" onClick={()=>history.push("/tickets")}>View All</button>
             </div>
           ),
           customPaging: i => (
@@ -119,14 +146,12 @@ function Arrow(props) {
       };
     return (
         <div>
-        <div>
+        <div className="ticketSlider">
         <Slider {...settings}>
         {list.map((li,i)=>{
                 return (
-                    <div className="flightList">
-                    <ul key={i}>
-                    <List className="item" list={li}/>
-                    </ul>
+                    <div className="ticketList">
+                    <TicketList className="item" list={li}/>
                     </div>
                 )
             })}
@@ -136,4 +161,4 @@ function Arrow(props) {
     );
 }
 
-export default FlightList;
+export default TicketSlider;
