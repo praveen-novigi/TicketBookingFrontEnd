@@ -45,7 +45,8 @@ function BotChatBubble(props) {
                 const dataHandler = data[0].custom[0];
                 console.log(dataHandler,"opts")
               msg.unshift(
-                { type:"Bot", 
+                { 
+                type:"Bot", 
                 opt:dataHandler.type, 
                 Blayout:false, 
                 message:dataHandler.text, 

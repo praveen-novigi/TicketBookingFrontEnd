@@ -62,16 +62,30 @@ function ChatScreen() {
         {
         msg.unshift( {type:"User", message:message})
         userRequest(message).then((data) => {
-            if (data)if(data.error) {
-              console.log(data.error, "err");
-              dispatch(addMessage({
-                array:msg,
-                length:msg.length
-            }))
+            if (data)if(data[0].custom === undefined) {
+                console.log(data[0].text, "err");
+                          msg.unshift(
+                            { type:"Bot", message:data[0].text});
+                          dispatch(addMessage({
+                            array:msg,
+                            length:msg.length
+                        }))
             } else {
                 const dataHandler = data[0].custom[0];
               msg.unshift(
-                { type:"Bot", opt:dataHandler.type, Blayout:false, message:dataHandler.text});
+                { 
+                type:"Bot", 
+                opt:dataHandler.type, 
+                Blayout:false, 
+                message:dataHandler.text, 
+                menu:dataHandler.buttons, 
+                Cancellation:dataHandler.Cancellation,
+                ReIssuance:dataHandler.ReIssuance,
+                BaggageDetails: dataHandler["Baggage Data"],
+                seat_Tru_Standard : dataHandler["Tru Standard"],
+                seat_Tru_Classic : dataHandler["Tru Classic"],
+                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"]
+                });
               dispatch(addMessage({
                 array:msg,
                 length:msg.length
@@ -82,6 +96,47 @@ function ChatScreen() {
           });
         }
     }
+    // const sendMessage= async(message)=>{
+    //     const msg = messageStack;
+    //     if(message !== "")
+    //     {
+    //     msg.unshift( {type:"User", message:message})
+    //     await userRequest(message).then((data) => {
+    //         console.log(data,"initial");
+    //         if (data)if(data[0].custom === undefined) {
+    //           console.log(data[0].text, "err");
+    //           msg.unshift(
+    //             { type:"Bot", message:data[0].text});
+    //           dispatch(addMessage({
+    //             array:msg,
+    //             length:msg.length
+    //         }))
+    //         } else {
+    //             const dataHandler = data[0].custom[0];
+    //             console.log(dataHandler,"opts")
+    //           msg.unshift(
+    //             { 
+    //             type:"Bot", 
+    //             opt:dataHandler.type, 
+    //             Blayout:false, 
+    //             message:dataHandler.text, 
+    //             menu:dataHandler.buttons, 
+    //             Cancellation:dataHandler.Cancellation,
+    //             ReIssuance:dataHandler.ReIssuance,
+    //             BaggageDetails: dataHandler["Baggage Data"],
+    //             seat_Tru_Standard : dataHandler["Tru Standard"],
+    //             seat_Tru_Classic : dataHandler["Tru Classic"],
+    //             seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"]
+    //           }
+    //             );
+    //           dispatch(addMessage({
+    //             array:msg,
+    //             length:msg.length
+    //         }))
+    //         }
+    //       });
+    //     }
+    // }
     const handleTyping =debounce(() => {
         setIsTyping(false);
       },5000);
