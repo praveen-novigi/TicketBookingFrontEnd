@@ -84,7 +84,8 @@ function ChatScreen() {
                 BaggageDetails: dataHandler["Baggage Data"],
                 seat_Tru_Standard : dataHandler["Tru Standard"],
                 seat_Tru_Classic : dataHandler["Tru Classic"],
-                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"]
+                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                Fare: dataHandler.Fare
                 });
               dispatch(addMessage({
                 array:msg,
@@ -290,7 +291,9 @@ function ChatScreen() {
                             standard_seat={o.seat_Tru_Standard}
                             classic_seat={o.seat_Tru_Classic}
                             max_corp_seat={o.seat_Tru_Max_Corporate}
-                            seatMap={(o.opt === "standard_seat" || o.opt === "classic_seat" || o.opt === "corporate_seat")?true:false}/>
+                            seatMap={(o.opt === "standard_seat" || o.opt === "classic_seat" || o.opt === "corporate_seat")?true:false}
+                            fare={o.Fare}
+                            />
                             :<UserChatBubble message={o.message}/>)
                         )
                     }

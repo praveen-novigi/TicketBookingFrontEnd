@@ -413,7 +413,7 @@
 }
 .UserchatBubble{
   box-shadow: 0px 0px 15px #00000026;
-  /* max-width: 46.667vw; */
+  max-width: 46.667vw;
   width: max-content;
   height: max-content;
   grid-row: 1/2;

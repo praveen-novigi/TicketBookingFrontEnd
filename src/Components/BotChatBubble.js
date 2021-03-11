@@ -56,7 +56,8 @@ function BotChatBubble(props) {
                 BaggageDetails: dataHandler["Baggage Data"],
                 seat_Tru_Standard : dataHandler["Tru Standard"],
                 seat_Tru_Classic : dataHandler["Tru Classic"],
-                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"]
+                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                Fare: dataHandler.Fare
               }
                 );
               dispatch(addMessage({
@@ -86,10 +87,12 @@ function BotChatBubble(props) {
           
           {props.opt === "faqoptions" && (
             <div className="options">
-              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.title)}} key={i}>{m.title}</div>)}
+              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload)}} key={i}>{m.title}</div>)}
             </div>
           )}
           
+          {/* Seat Options */}
+
           {props.opt === "seatoptions" && (
             <div className="options">
               {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload)}} key={i}>{m.title}</div>)}
@@ -128,6 +131,79 @@ function BotChatBubble(props) {
             {props.seatMap && <button className="seatMap">View Seat Map</button>}
             </>
           )}
+          {props.opt === "all_seat_charges" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading">Tru Standard Seats</p>
+                <ul className="fareMessageList">
+                  {props.standard_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
+                </ul>
+                <p className="fareDetailsHeading">Tru Classic Seats</p>
+                <ul className="fareMessageList">
+                  {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
+                </ul>
+                <p className="fareDetailsHeading">Tru Corporate Seats</p>
+                <ul className="fareMessageList">
+                  {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            </>
+          )}
+
+          {/* Fare Options */}
+          
+          {props.opt === "fareoptions" && (
+            <div className="options">
+              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload)}} key={i}>{m.title}</div>)}
+            </div>
+          )}
+          {props.opt === "tru_standard_fare" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading">Tru Standard Fare Charges</p>
+                <ul className="fareMessageList">
+                  {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            </>
+          )}
+          {props.opt === "tru_classic_fare" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading">Tru Classic Fare Charges</p>
+                <ul className="fareMessageList">
+                  {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            </>
+          )}
+          {props.opt === "tru_max_corp_fare" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading">Tru Corporate Fare Charges</p>
+                <ul className="fareMessageList">
+                  {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            </>
+          )}
+          {props.opt === "all_fare_categories" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading">Tru Standard Fare Charges</p>
+                <ul className="fareMessageList">
+                  {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            </>
+          )}
+
+          {/* Baggage Options */}
 
           {props.opt === "baggageoptions" && (
             <div className="options">
@@ -139,7 +215,7 @@ function BotChatBubble(props) {
 
           {props.opt === "generaloptions" && (
             <div className="options">
-              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.title)}} key={i}>{m.title}</div>)}
+              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload)}} key={i}>{m.title}</div>)}
             </div>
           )}
           {props.opt === "prohibiteditemoptions" && (
