@@ -80,12 +80,13 @@ function ChatScreen() {
                 message:dataHandler.text, 
                 menu:dataHandler.buttons, 
                 Cancellation:dataHandler.Cancellation,
-                ReIssuance:dataHandler.ReIssuance,
+                ReIssuance:dataHandler.Reissuance,
                 BaggageDetails: dataHandler["Baggage Data"],
                 seat_Tru_Standard : dataHandler["Tru Standard"],
                 seat_Tru_Classic : dataHandler["Tru Classic"],
                 seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
-                Fare: dataHandler.Fare
+                Fare: dataHandler.Fare,
+                Seat:dataHandler.Seat
                 });
               dispatch(addMessage({
                 array:msg,
