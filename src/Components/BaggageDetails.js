@@ -7,7 +7,7 @@ function BaggageDetails(props){
         <div className="menuList">
             {props.data.map((weight,i)=>{
                 return(<div className="menuListMini">
-                    <div className="mealBox">{weight["Check-in, Weight"]}</div>
+                    <div className="mealBox">{weight["Weight"]}</div>
                     <div className="mealPriceBox">{weight.Size}</div>
                 </div>)
                 })
