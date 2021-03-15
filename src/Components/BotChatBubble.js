@@ -29,7 +29,25 @@ function BotChatBubble(props) {
     const dispatch = useDispatch();
     const sendMessage=(message)=>{
         const msg = messageStack;
-        if(message !== "")
+        if( message === "View Seat Map"){
+          msg.unshift( {type:"User", message:message});
+          dispatch(addMessage({
+              array:msg,
+              length:msg.length
+          }));
+        msg.unshift(
+            { 
+            type:"Bot", 
+            opt:"13", 
+            Blayout:true,
+            message:"Here is your Seat Map"
+          });
+        dispatch(addMessage({
+            array:msg,
+            length:msg.length
+        })); 
+        }
+        else if(message !== "")
         {
         msg.unshift( {type:"User", message:message})
         userRequest(message).then((data) => {
@@ -104,10 +122,10 @@ function BotChatBubble(props) {
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Standard Seats</p>
                 <ul className="fareMessageList">
-                  {props.standard_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
+                  {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "classic_seat" && (
@@ -115,10 +133,10 @@ function BotChatBubble(props) {
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Classic Seats</p>
                 <ul className="fareMessageList">
-                  {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
+                  {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "corporate_seat" && (
@@ -126,10 +144,10 @@ function BotChatBubble(props) {
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Corporate Seats</p>
                 <ul className="fareMessageList">
-                  {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
+                  {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "all_seat_charges" && (
@@ -148,7 +166,7 @@ function BotChatBubble(props) {
                   {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
 
@@ -167,7 +185,7 @@ function BotChatBubble(props) {
                   {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "tru_classic_fare" && (
@@ -178,7 +196,7 @@ function BotChatBubble(props) {
                   {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "tru_max_corp_fare" && (
@@ -189,7 +207,7 @@ function BotChatBubble(props) {
                   {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "all_fare_categories" && (
@@ -200,7 +218,7 @@ function BotChatBubble(props) {
                   {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
 
@@ -246,7 +264,7 @@ function BotChatBubble(props) {
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "cancel_std_image2" && (
@@ -263,7 +281,7 @@ function BotChatBubble(props) {
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "cancel_classic_image" && (
@@ -280,7 +298,7 @@ function BotChatBubble(props) {
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "cancel_max_corp_image" && (
@@ -297,7 +315,7 @@ function BotChatBubble(props) {
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
 
@@ -319,7 +337,7 @@ function BotChatBubble(props) {
                   <br/>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "reissuance_classic" && (
@@ -332,7 +350,7 @@ function BotChatBubble(props) {
                   <br/>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "reissuance_max_corp2" && (
@@ -345,7 +363,7 @@ function BotChatBubble(props) {
                   <br/>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "reissuance_standard2" && (
@@ -358,7 +376,7 @@ function BotChatBubble(props) {
                   <br/>
                 </ul>
             </div>
-            {props.seatMap && <button className="seatMap">View Seat Map</button>}
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
           )}
           {props.opt === "checkinbaggage" &&(<BaggageDetails data={props.baggage}/>)}

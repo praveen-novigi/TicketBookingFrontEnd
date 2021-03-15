@@ -58,7 +58,25 @@ function ChatScreen() {
     const dispatch = useDispatch();
     const sendMessage=()=>{
         const msg = messageStack;
-        if(message !== "")
+        if( message === "View Seat Map"){
+            msg.unshift( {type:"User", message:message});
+            dispatch(addMessage({
+                array:msg,
+                length:msg.length
+            }));
+          msg.unshift(
+              { 
+              type:"Bot", 
+              opt:"13", 
+              Blayout:true,
+              message:"Here is your Seat Map"
+            });
+          dispatch(addMessage({
+              array:msg,
+              length:msg.length
+          })); 
+          }
+        else if(message !== "")
         {
         msg.unshift( {type:"User", message:message})
         userRequest(message).then((data) => {
@@ -294,6 +312,7 @@ function ChatScreen() {
                             max_corp_seat={o.seat_Tru_Max_Corporate}
                             seatMap={(o.opt === "standard_seat" || o.opt === "classic_seat" || o.opt === "corporate_seat")?true:false}
                             fare={o.Fare}
+                            seat={o.Seat}
                             />
                             :<UserChatBubble message={o.message}/>)
                         )
