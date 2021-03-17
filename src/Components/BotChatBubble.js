@@ -74,7 +74,7 @@ function BotChatBubble(props) {
                 BaggageDetails: dataHandler["Baggage Data"],
                 seat_Tru_Standard : dataHandler["Tru Standard"],
                 seat_Tru_Classic : dataHandler["Tru Classic"],
-                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                seat_Tru_Max_Corporate : dataHandler["Tru Max/Corporate"],
                 Fare: dataHandler.Fare,
                 Seat:dataHandler.Seat
               }
@@ -161,10 +161,10 @@ function BotChatBubble(props) {
                 <ul className="fareMessageList">
                   {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
                 </ul>
-                <p className="fareDetailsHeading">Tru Corporate Seats</p>
+                {/* <p className="fareDetailsHeading">Tru Corporate Seats</p>
                 <ul className="fareMessageList">
                   {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
-                </ul>
+                </ul> */}
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
@@ -215,7 +215,15 @@ function BotChatBubble(props) {
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Standard Fare Charges</p>
                 <ul className="fareMessageList">
-                  {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                  {props.standard_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                </ul>
+                <p className="fareDetailsHeading">Tru Classic Fare Charges</p>
+                <ul className="fareMessageList">
+                  {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
+                </ul>
+                <p className="fareDetailsHeading">Tru Max Corporate Fare Charges</p>
+                <ul className="fareMessageList">
+                  {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li><br/></>)}
                 </ul>
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
@@ -253,13 +261,13 @@ function BotChatBubble(props) {
           {props.opt === "cancel_std_image" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   <br/>
                 </ul>
-                <p className="fareDetailsHeading">Corporate Fare</p>
+                <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
@@ -270,13 +278,13 @@ function BotChatBubble(props) {
           {props.opt === "cancel_std_image2" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   <br/>
                 </ul>
-                <p className="fareDetailsHeading">Corporate Fare</p>
+                <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
@@ -287,13 +295,13 @@ function BotChatBubble(props) {
           {props.opt === "cancel_classic_image" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   <br/>
                 </ul>
-                <p className="fareDetailsHeading">Corporate Fare</p>
+                <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
@@ -304,13 +312,42 @@ function BotChatBubble(props) {
           {props.opt === "cancel_max_corp_image" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   <br/>
                 </ul>
-                <p className="fareDetailsHeading">Corporate Fare</p>
+                <p className="fareDetailsHeading">Cancellation Important Note</p>
+                <ul className="fareMessageList">
+                  <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
+            </>
+          )}
+          {props.opt === "all_cancellation_charges" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading"> TRU Standard Cancellation Charges</p>
+                <ul className="fareMessageList">
+                  {props.standard_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
+                  <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
+                  <br/>
+                </ul>
+                <p className="fareDetailsHeading"> TRU Classic Cancellation Charges</p>
+                <ul className="fareMessageList">
+                  {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
+                  <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
+                  <br/>
+                </ul>
+                <p className="fareDetailsHeading"> TRU Max Corporate Cancellation Charges</p>
+                <ul className="fareMessageList">
+                  {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
+                  <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
+                  <br/>
+                </ul>
+                <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
                 </ul>
@@ -330,7 +367,7 @@ function BotChatBubble(props) {
           {props.opt === "reissuance_standard" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Re-Issuance Charges</p>
                 <ul className="fareMessageList">
                   {props.reissuance.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">DOF stands for Difference Of Fare</li>
@@ -343,7 +380,7 @@ function BotChatBubble(props) {
           {props.opt === "reissuance_classic" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Re-Issuance Charges</p>
                 <ul className="fareMessageList">
                   {props.reissuance.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">DOF stands for Difference Of Fare</li>
@@ -356,7 +393,7 @@ function BotChatBubble(props) {
           {props.opt === "reissuance_max_corp2" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Re-Issuance Charges</p>
                 <ul className="fareMessageList">
                   {props.reissuance.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">DOF stands for Difference Of Fare</li>
@@ -369,9 +406,34 @@ function BotChatBubble(props) {
           {props.opt === "reissuance_standard2" && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Retail Fare</p>
+                <p className="fareDetailsHeading">Re-Issuance Charges</p>
                 <ul className="fareMessageList">
                   {props.reissuance.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
+                  <li className="fareMessage">DOF stands for Difference Of Fare</li>
+                  <br/>
+                </ul>
+            </div>
+            {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
+            </>
+          )}
+          {props.opt === "all_reissuance_charges" && (
+            <>
+            <div className="fareDetails">
+                <p className="fareDetailsHeading">Re-Issuance Standard Charges</p>
+                <ul className="fareMessageList">
+                  {props.standard_seat.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
+                  <li className="fareMessage">DOF stands for Difference Of Fare</li>
+                  <br/>
+                </ul>
+                <p className="fareDetailsHeading">Re-Issuance Classic Charges</p>
+                <ul className="fareMessageList">
+                  {props.classic_seat.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
+                  <li className="fareMessage">DOF stands for Difference Of Fare</li>
+                  <br/>
+                </ul>
+                <p className="fareDetailsHeading">Re-Issuance Max Corporate Charges</p>
+                <ul className="fareMessageList">
+                  {props.max_corp_seat.map((m,i) => m.Charges !== undefined && <><li className="fareMessage" key={i}>{m.Charges} if re issued {m["Prior to Depature"]} prior to flight departure</li><br/></>)}
                   <li className="fareMessage">DOF stands for Difference Of Fare</li>
                   <br/>
                 </ul>
