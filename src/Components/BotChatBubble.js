@@ -40,7 +40,7 @@ function BotChatBubble(props) {
             type:"Bot", 
             opt:"13", 
             Blayout:true,
-            message:"Here is your Seat Map"
+            message:"Here is your \ Seat Map"
           });
         dispatch(addMessage({
             array:msg,
@@ -161,10 +161,10 @@ function BotChatBubble(props) {
                 <ul className="fareMessageList">
                   {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
                 </ul>
-                {/* <p className="fareDetailsHeading">Tru Corporate Seats</p>
+                <p className="fareDetailsHeading">Tru Corporate Seats</p>
                 <ul className="fareMessageList">
                   {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li><br/></>)}
-                </ul> */}
+                </ul>
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map")}}>View Seat Map</button>}
             </>
