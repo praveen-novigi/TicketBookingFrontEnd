@@ -74,7 +74,7 @@ function BotChatBubble(props) {
                 BaggageDetails: dataHandler["Baggage Data"],
                 seat_Tru_Standard : dataHandler["Tru Standard"],
                 seat_Tru_Classic : dataHandler["Tru Classic"],
-                seat_Tru_Max_Corporate : dataHandler["Tru Max/Corporate"],
+                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
                 Fare: dataHandler.Fare,
                 Seat:dataHandler.Seat
               }

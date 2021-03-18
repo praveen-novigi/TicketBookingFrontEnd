@@ -70,7 +70,7 @@ function OptionSelection() {
                 service:"FAQs"
             }))
             setSelect("question")
-            sendMessage("faqs_trujet")}}>
+            sendMessage("FAQs")}}>
             <div className="questionBox" style={selectM === 'question' ?{background:"white"}:{}}>
                 <img src={question} className="question"/>
             </div>
