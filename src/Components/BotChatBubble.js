@@ -94,7 +94,10 @@ function BotChatBubble(props) {
             <img src={Bot} className="BotDP"/>
         </div>
         <div className="BotchatBubble" style={props.opt === "1" ?{width: "46.66vw"}:{}}>
-            {props.message}
+            {typeof(props.message) === "string" ? props.message : props.message.map((m,i)=>(<>
+            <p key={i}>{m}</p>
+            <br/>
+            </>))}
         </div>
         
         {/* Extra Bot Feature */}
