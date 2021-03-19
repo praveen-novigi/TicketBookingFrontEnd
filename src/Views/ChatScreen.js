@@ -258,14 +258,14 @@ function ChatScreen() {
                 <p style={{fontSize:"4.4334vh",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
             </div>)}
-            <div className="chatBox" style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}}>
-                <div className="scrollBox" style={{height:"80.6798vh",
-                        paddingLeft:"9.6vw",
-                        display:"grid",
-                        gridTemplateColumns:"1fr 1fr",
-                        gridTemplateRows:"4.6798vh 63.5467vh 8.866vh",
-                        paddingTop:"1.4631vh"
-                        },Service.selected ?{height:"80.6798vh"}:{}}>
+            <div className="chatBox"
+            //  style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}} temporarily changed due to ui issues
+             >
+                <div className="scrollBox"
+                //  style={
+                //         Service.selected ?{height:"80.6798vh"}:{} temporarily changed due to ui issues
+                //         }
+                        >
                     {isTyping && <TypingBubble/>}
                     {/* {Service.selected &&(<>
                     <BotChatBubble opt="13" Blayout={true} message="What else may I assist you with further?"/>
