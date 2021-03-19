@@ -8,7 +8,7 @@ import checkedIcon from '../assests/images/checkedIcon.svg';
 import airplaneD from '../assests/images/airplaneD.svg';
 import ticketFlight from '../assests/images/ticketFlight.svg';
 
-function TicketList(props){
+function TicketListNew(props){
     const Service = useSelector(state => state.flight);
     const dispatch = useDispatch();
     const [select,setSelect]=useState("");
@@ -65,4 +65,4 @@ function TicketList(props){
         })
     )
 }
-export default TicketList;
+export default TicketListNew;

@@ -8,7 +8,7 @@ import microphone from '../assests/images/microphone.svg';
 import sendLogo from '../assests/images/airplaneWhite.svg';
 import {useSelector} from 'react-redux';
 import debounce from "lodash/debounce";
-import Ticketlist from '../Components/TicketList';
+import Ticketlist from '../Components/TicketListNew';
 import TypingBubble from '../Components/Typing Bubble';
 import filterIcon from '../assests/images/filterIcon.svg';
 import { useHistory} from "react-router-dom";

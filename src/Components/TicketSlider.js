@@ -4,7 +4,7 @@ import next from '../assests/images/whiteNextArrow.svg';
 import prev from '../assests/images/whitePrevArrow.svg';
 import { useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux';
-import TicketList from './TicketList';
+import TicketListNew from './TicketListNew';
 import Slider from "react-slick";
 
 
@@ -151,7 +151,7 @@ function Arrow(props) {
         {list.map((li,i)=>{
                 return (
                     <div className="ticketList">
-                    <TicketList className="item" list={li}/>
+                    <TicketListNew className="item" list={li}/>
                     </div>
                 )
             })}
