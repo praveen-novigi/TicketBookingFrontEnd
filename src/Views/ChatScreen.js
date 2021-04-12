@@ -220,10 +220,10 @@ function ChatScreen() {
                     </div>
                 </div>
             </div>
-            {!(Service.selected) && (<div className="greet">
+            {/* {!(Service.selected) && (<div className="greet">
                 <p style={{fontSize:"4.4334vh",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
-            </div>)}
+            </div>)} */}
             <div className="chatBox"
             //  style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}} temporarily changed due to ui issues
              >
