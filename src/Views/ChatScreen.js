@@ -70,7 +70,7 @@ function ChatScreen() {
               { 
               type:"Bot", 
               opt:"13", 
-              Blayout:true,
+              Blayout:false,
               message:"Here is your Seat Map"
             });
           dispatch(addMessage({
