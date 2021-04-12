@@ -5,6 +5,7 @@ import homeActive from '../assests/images/homeActive.svg';
 import settings from '../assests/images/settings.svg';
 import BG2 from '../assests/images/BG2.svg';
 import BG1 from '../assests/images/BG1.svg';
+import Bot from '../assests/images/Bot.svg';
 import microphone from '../assests/images/microphone.svg';
 import sendLogo from '../assests/images/airplaneWhite.svg';
 import User from '../assests/images/user.svg';
@@ -39,9 +40,11 @@ import {useDispatch} from 'react-redux';
 import {addMessage} from '../Redux/actions/messageArrayActions';
 
 function ChatScreen() {
+    const [popUp, setpopUp]=useState(false);
     const messageStack = useSelector(state => state.messageArray.array, shallowEqual);
     const msglength = useSelector(state => state.messageArray.length, shallowEqual);
     const [msgLength, setMsgLength] = useState(messageStack.length);
+    const opts=["Bookings","Cancellation","Seats","Meals","Web-Checkin","Baggage"]
     React.useEffect(()=>{
         console.log(messageStack,"messages");
         setMsgLength(messageStack.length)
@@ -49,8 +52,7 @@ function ChatScreen() {
         if(messageStack.length % 2 !== 0){
             console.log()//need to initiate a reload here
         }
-    },[msglength])
-    const opts=["Bookings","Cancellation","Seats","Meals","Web-Checkin","Baggage"]
+    },[msglength, popUp])
     const Service = useSelector(state => state.todo);
     const [message, setMessage]=useState("");
     const [isTyping, setIsTyping]=useState(false);
@@ -116,47 +118,6 @@ function ChatScreen() {
           });
         }
     }
-    // const sendMessage= async(message)=>{
-    //     const msg = messageStack;
-    //     if(message !== "")
-    //     {
-    //     msg.unshift( {type:"User", message:message})
-    //     await userRequest(message).then((data) => {
-    //         console.log(data,"initial");
-    //         if (data)if(data[0].custom === undefined) {
-    //           console.log(data[0].text, "err");
-    //           msg.unshift(
-    //             { type:"Bot", message:data[0].text});
-    //           dispatch(addMessage({
-    //             array:msg,
-    //             length:msg.length
-    //         }))
-    //         } else {
-    //             const dataHandler = data[0].custom[0];
-    //             console.log(dataHandler,"opts")
-    //           msg.unshift(
-    //             { 
-    //             type:"Bot", 
-    //             opt:dataHandler.type, 
-    //             Blayout:false, 
-    //             message:dataHandler.text, 
-    //             menu:dataHandler.buttons, 
-    //             Cancellation:dataHandler.Cancellation,
-    //             ReIssuance:dataHandler.ReIssuance,
-    //             BaggageDetails: dataHandler["Baggage Data"],
-    //             seat_Tru_Standard : dataHandler["Tru Standard"],
-    //             seat_Tru_Classic : dataHandler["Tru Classic"],
-    //             seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"]
-    //           }
-    //             );
-    //           dispatch(addMessage({
-    //             array:msg,
-    //             length:msg.length
-    //         }))
-    //         }
-    //       });
-    //     }
-    // }
     const handleTyping =debounce(() => {
         setIsTyping(false);
       },5000);
@@ -164,6 +125,9 @@ function ChatScreen() {
         setMessage(e.target.value);
         setIsTyping(true);
         handleTyping()
+    }
+    const togglePopUp = async()=>{
+        setpopUp(!popUp)
     }
   return (
     <div className="container">
@@ -244,6 +208,8 @@ function ChatScreen() {
             <img src={BG2} style={{width:"122vw"}}/>
         </div>
         <div className="landOPAC"/>
+        {popUp?
+        (<>
         <div className="landContentBox">
             <div className="topBar">
                 <img src={menu} className="menu" onClick={()=>{setShowMenu(true)}}/>
@@ -268,8 +234,9 @@ function ChatScreen() {
                         >
                     {isTyping && <TypingBubble/>}
                     {/* {Service.selected &&(<>
-                    <BotChatBubble opt="13" Blayout={true} message="What else may I assist you with further?"/>
-                    <BotChatBubble opt="12" Blayout={true} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="13" Blayout={false} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="14" Blayout={true} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="12" Blayout={false} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="11" Blayout={true} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="10" Blayout={false} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="9" Blayout={false} message="What else may I assist you with further?"/>
@@ -281,7 +248,7 @@ function ChatScreen() {
                     <BotChatBubble opt="3" Blayout={false} options={opts} message={"Passengers can do web check-In until 4 hour prior to the departure of their flight. What else may I assist you with further?"}/>
                     <UserChatBubble message={"What is the latest by which I can do web check-in?"}/>
                     <BotChatBubble opt="3" Blayout={false} options={opts} message="What else may I assist you with further?"/>
-                    <BotChatBubble opt="5" Blayout={true} message="What else may I assist you with further?"/>
+                    <BotChatBubble opt="5" Blayout={false} message="What else may I assist you with further?"/>
                     <UserChatBubble message={"I would like to check out the meals and fares."}/>
                     <BotChatBubble opt="3" Blayout={false} options={opts} message="What else may I assist you with further?"/>
                     <BotChatBubble seatMap={true} opt="4" Blayout={false} message={`The Fares for Seat Selection are as follows:`}/>
@@ -333,7 +300,10 @@ function ChatScreen() {
                             <img src={sendLogo} className="sendLogo"/>
                         </div>
                     </div>
-        </div></>)}
+        </div>
+        
+        </>):""
+        }<img className="popLogo" src={Bot} onClick={()=>{setpopUp(!popUp)}}/></>)}
     </div>
   );
 }

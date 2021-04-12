@@ -33,8 +33,13 @@ function BookingDetails() {
                         Indigo
                     </div>
                 </div>
-                <div className="detailsBody">
-                    
+                <div className="detailsSection">
+                {detailsType === "flight" ?<div className="flightDetailsSection">
+
+                    </div>
+                    :<div className="priceDetailsSection">
+
+                    </div>}
                 </div>
             </div>
             <div className="">

@@ -20,7 +20,7 @@ function TicketBookingFinal() {
     const [endDateString, setEndDateString] = useState("20 Feb 2021");
   return (
       <div>
-            <div className="TicketBookingBox" style={{minWidth:"32.512vh", gridTemplateRows: "1fr auto 1fr auto 1fr"}}>
+            <div className="TicketBookingBox" style={{ gridTemplateRows: "1fr auto 1fr auto 1fr"}}>
                 <div className="destRow">
                     <div className="from">
                         <p className="fromTo">
@@ -31,7 +31,7 @@ function TicketBookingFinal() {
                             Mumbai
                         </p>
                     </div>
-                    <img src={roundTrip} style={{margin:"auto", width:"24vw"}} />
+                    <img className="roundTripLogo" src={roundTrip} />
                     <div className="dest">
                     <p className="fromTo">
                             To
@@ -78,14 +78,14 @@ function TicketBookingFinal() {
                         <p className="fromTo">
                             Class
                         </p>
-                        <img src={economy} style={{justifySelf:"center",alignSelf:"center", width:"6.38133vw"}}/>
+                        <img className="economySeatLogo" src={economy} style={{justifySelf:"center",alignSelf:"center"}}/>
                         <p style={{font:"10px medium", fontFamily:"Roboto"}}>Economy</p>
                     </div>
                 </div>
             </div>
-            <div className="listButtonBox" style={{width:"100%", marginTop:"1.84729vh",columnGap:"2.8533vw",paddingLeft:"1.5vw"}}>
-                        <button className="proceedButton" style={{padding:"1.354vh 9.76vw", width:"32.344vw", font:"13px Bold", fontFamily:"Roboto"}}>Confirm</button>
-                        <button className="backButton" style={{padding:"1.354vh 10.8266vw", width:"32.344vw", font:"13px Regular", fontFamily:"Roboto"}}>Modify</button>
+            <div className="listButtonBox Booking" style={{width:"100%"}}>
+                        <button className="proceedButton" style={{font:"13px Bold", fontFamily:"Roboto"}}>Confirm</button>
+                        <button className="backButton" style={{font:"13px Regular", fontFamily:"Roboto"}}>Modify</button>
             </div>
         </div>
   );

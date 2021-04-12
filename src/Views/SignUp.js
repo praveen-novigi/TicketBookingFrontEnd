@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(3),
     },
     textField: {
-      width: '80.53vw',
-      marginBottom:'1.84729vmax',
+      width: 'calc(80.53*0.230rem)',
+      marginBottom:'calc(1.84729*0.230rem)',
       borderRadius: '50px'
     },
     icon:{
@@ -137,7 +137,7 @@ function SignUp() {
                     />
                     </FormControl>
                 </div>
-                <button className="signUpInButton" style={{padding:"1.7857vh 20.8vw"}} onClick={() => { history.push("/chat"); }}>Create Your Account</button>
+                <button className="signUpInButton" style={{padding:"calc(1.7857*0.40rem) calc(20.80.230rem)"}} onClick={() => { history.push("/chat"); }}>Create Your Account</button>
                 <div className="TermsandCond">
                     <p>By signing up, you agree with our Terms of </p>
                     <p>Services and Privacy Policy</p>

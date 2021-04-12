@@ -62,7 +62,7 @@ function TicketBooking() {
                     Mumbai
                 </p>
             </div>
-            <img src={roundTrip} style={{margin:"auto", width:"24vw"}} />
+            <img className="roundTripLogo" src={roundTrip} />
             <div className="dest">
             <p className="fromTo">
                     To

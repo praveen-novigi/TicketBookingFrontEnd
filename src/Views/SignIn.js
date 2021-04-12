@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(3),
     },
     textField: {
-      width: '80.53vw',
-      marginBottom:'1.84729vmax',
+      width: 'calc(80.53*0.230rem)',
+      marginBottom:'calc(1.84729*0.230rem)',
       borderRadius: '50px'
     },
     icon:{

@@ -1,4 +1,4 @@
-const url= process.env.BACKEND_API_URL;
+const url= process.env.REACT_BACKEND_API_URL;
 const sender_id = 'default';
 console.log(process.env);
 //ChatBot_API_Handling

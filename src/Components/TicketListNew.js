@@ -25,7 +25,7 @@ function TicketListNew(props){
                                 <div className="row1">
                                     <img src={checkedIcon}/>
                                     <p>{o.flightName} | {o.flight} | {o.flightId}</p>
-                                    <img src={airplaneD} style={{width:"3.4667vw"}}/>
+                                    <img src={airplaneD} className="airplaneTicketList"/>
                                 </div>
                                 <div className="row2">
                                     <div className="row2col1">
@@ -34,7 +34,7 @@ function TicketListNew(props){
                                     </div>
                                     <div className="row2col2">
                                         <p>{o.travelTime}</p>
-                                        <img src={ticketFlight} style={{width:"13vw"}}/>
+                                        <img src={ticketFlight} className="ticketFlightList"/>
                                         <p>1 flight via New Delhi</p>
                                     </div>
                                     <div className="row2col3">

@@ -12,15 +12,15 @@ function SeatSelection() {
     return (
         <div className="seatBox">
             <div className="seatOption" style={select === "economy" ? {color:"#ff0100"}:{}} onClick={()=>setSelect("economy")}>
-                <img src={select === "economy" ? economy : economyIN} style={{justifySelf:"center",alignSelf:"center", width:"6.38133vw"}}/>
+                <img className="economySeatLogo" src={select === "economy" ? economy : economyIN}/>
                 <p>Economy</p>
             </div>
             <div className="seatOption" style={select === "premiumeconomy" ? {color:"#ff0100"}:{}} onClick={()=>setSelect("premiumeconomy")}>
-                <img src={select === "premiumeconomy" ? premiumEconomy : premiumEconomyIN} style={{justifySelf:"center",alignSelf:"center", width:"9.28266vw"}}/>
+                <img className="premiumEconomySeatLogo" src={select === "premiumeconomy" ? premiumEconomy : premiumEconomyIN}/>
                 <p>Premium Economy</p>
             </div>
             <div className="seatOption"  style={select === "business" ? {color:"#ff0100"}:{}} onClick={()=>setSelect("business")}>
-                <img src={select === "business" ? business : businessIN} style={{justifySelf:"center",alignSelf:"center", width:"9.848vw"}}/>
+                <img className="businessSeatLogo" src={select === "business" ? business : businessIN}/>
                 <p>Economy</p>
             </div>
         </div>

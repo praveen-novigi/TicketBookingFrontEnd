@@ -10,6 +10,7 @@ import Passengers from './Passengers';
 import SeatSelection from './SeatSelection';
 import TicketBookingFinal from './TicketBookingFinal';
 import TicketSlider from '../Components/TicketSlider';
+import DoubleTicketSlider from '../Components/DoubleTicketSlider';
 import BookingDetails from '../Components/BookingDetails';
 import SeatMap from './SeatMap';
 import {userRequest} from '../helper/Backend.js';
@@ -17,6 +18,7 @@ import {addMessage} from '../Redux/actions/messageArrayActions';
 import {useSelector, shallowEqual} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import BaggageDetails from './BaggageDetails';
+import TruJetSeatMap from './TruJetSeatMap';
 
 function BotChatBubble(props) {
   const messageStack = useSelector(state => state.messageArray.array, shallowEqual);
@@ -452,14 +454,18 @@ function BotChatBubble(props) {
           {props.opt === "8" &&(<Passengers/>)}
           {props.opt === "9" &&(<SeatSelection/>)}
           {props.opt === "10" &&(<TicketBookingFinal/>)}
+          {props.opt === "5" &&(<MenuList/>)}
+          {props.opt === "12" &&(<BookingDetails/>)}
+          {props.opt === "13" &&(<TruJetSeatMap/>)}
+          {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" ?
+          <button className="goBackButton" onClick={()=>{sendMessage("Go Back to Initial Options")}}>Go Back</button>:""}
         {props.Blayout === false ?<p className="Bottime">16:54</p>:""}
         </div>
         {props.Blayout === true &&
         <div className="bigOption">
-          {props.opt === "5" &&(<MenuList/>)}
           {props.opt === "11" &&(<TicketSlider/>)}
-          {props.opt === "12" &&(<BookingDetails/>)}
-          {props.opt === "13" &&(<SeatMap/>)}
+          {props.opt === "14" &&(<DoubleTicketSlider/>)}
+          <button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back to Initial Options")}}>Go Back</button>
            <p className="Bottime">16:54</p>
         </div>
         }
