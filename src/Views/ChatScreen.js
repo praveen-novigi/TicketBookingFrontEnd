@@ -81,7 +81,45 @@ function ChatScreen() {
         else if(message !== "")
         {
         msg.unshift( {type:"User", message:message})
-        userRequest(message).then((data) => {
+        if(message.toUpperCase().trim() === "GO BACK"){
+            userRequest("Go Back to Initial options").then((data) => {
+                if (data)if(data[0].custom === undefined) {
+                    console.log(data[0].text, "err");
+                              msg.unshift(
+                                { type:"Bot", message:data[0].text});
+                              dispatch(addMessage({
+                                array:msg,
+                                length:msg.length
+                            }))
+                } else {
+                    const dataHandler = data[0].custom[0];
+                  msg.unshift(
+                    { 
+                    type:"Bot", 
+                    opt:dataHandler.type, 
+                    Blayout:false, 
+                    message:dataHandler.text, 
+                    menu:dataHandler.buttons, 
+                    Cancellation:dataHandler.Cancellation,
+                    ReIssuance:dataHandler.Reissuance,
+                    BaggageDetails: dataHandler["Baggage Data"],
+                    seat_Tru_Standard : dataHandler["Tru Standard"],
+                    seat_Tru_Classic : dataHandler["Tru Classic"],
+                    seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                    Fare: dataHandler.Fare,
+                    Seat:dataHandler.Seat, 
+                    contact:dataHandler.number
+                    });
+                  dispatch(addMessage({
+                    array:msg,
+                    length:msg.length
+                }))
+                }
+                setIsTyping(false);
+                setMessage("");
+              });
+        }
+        else{userRequest(message).then((data) => {
             if (data)if(data[0].custom === undefined) {
                 console.log(data[0].text, "err");
                           msg.unshift(
@@ -115,7 +153,7 @@ function ChatScreen() {
             }
             setIsTyping(false);
             setMessage("");
-          });
+          });}
         }
     }
     const handleTyping =debounce(() => {
@@ -266,7 +304,8 @@ function ChatScreen() {
                     {
                         messageStack&&msgLength>0&&messageStack.map((o,i)=>
                         
-                            (o.type==="Bot"?<BotChatBubble 
+                            (o.type==="Bot"?<BotChatBubble
+                            key={i}
                             opt={o.opt} 
                             options={o.menu} 
                             Blayout={o.Blayout} 
@@ -277,11 +316,12 @@ function ChatScreen() {
                             standard_seat={o.seat_Tru_Standard}
                             classic_seat={o.seat_Tru_Classic}
                             max_corp_seat={o.seat_Tru_Max_Corporate}
+                            contact={o.contact}
                             seatMap={(o.opt === "standard_seat" || o.opt === "classic_seat" || o.opt === "corporate_seat")?true:false}
                             fare={o.Fare}
                             seat={o.Seat}
                             />
-                            :<UserChatBubble message={o.message}/>)
+                            :<UserChatBubble key={i} message={o.message}/>)
                         )
                     }
                 </div>

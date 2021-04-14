@@ -29,9 +29,69 @@ function BotChatBubble(props) {
         setMsgLength(messageStack.length)
     },[msglength])
     const dispatch = useDispatch();
-    const sendMessage=(message)=>{
+    const sendMessage=async(message)=>{
         const msg = messageStack;
-        if( message === "View Seat Map"){
+        if(message === "Go Back"){
+          msg.unshift({type:"User", message:message});
+          dispatch(addMessage({
+            array:msg,
+            length:msg.length
+        }));
+        if(props.opt === "cancellationoptions" || props.opt === "changefeeoptions" || props.opt === "seatoptions" ||
+        props.opt === "fareoptions" || props.opt === "mealoptions" ||props.opt === "baggageoptions" ||
+        props.opt === "specialservices" || props.opt === "webcheckinoptions" || props.opt === "generaloptions" ||
+        props.opt === "refundfaqoptions" ){
+          userRequest("Go Back to Initial options").then((data) => {
+            if (data)if(data[0].custom === undefined) {
+                console.log(data[0].text, "err");
+                          msg.unshift(
+                            { type:"Bot", message:data[0].text});
+                          dispatch(addMessage({
+                            array:msg,
+                            length:msg.length
+                        }))
+            } else {
+                const dataHandler = data[0].custom[0];
+              msg.unshift(
+                { 
+                type:"Bot", 
+                opt:dataHandler.type, 
+                Blayout:false, 
+                message:dataHandler.text, 
+                menu:dataHandler.buttons, 
+                Cancellation:dataHandler.Cancellation,
+                ReIssuance:dataHandler.Reissuance,
+                BaggageDetails: dataHandler["Baggage Data"],
+                seat_Tru_Standard : dataHandler["Tru Standard"],
+                seat_Tru_Classic : dataHandler["Tru Classic"],
+                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                Fare: dataHandler.Fare,
+                Seat:dataHandler.Seat, 
+                contact:dataHandler.number
+                });
+              dispatch(addMessage({
+                array:msg,
+                length:msg.length
+            }))
+            }
+          });
+        }
+        else{
+          let i =2;
+        while(true){
+          if(msg[i].type === "Bot"){
+            break;
+          }
+          i++;
+          console.log(i,msg[i].type,"in")
+        }
+        msg.unshift(msg[i]);}
+        dispatch(addMessage({
+            array:msg,
+            length:msg.length
+          })); 
+        }
+        else if( message === "View Seat Map"){
           msg.unshift( {type:"User", message:message});
           dispatch(addMessage({
               array:msg,
@@ -41,7 +101,7 @@ function BotChatBubble(props) {
             { 
             type:"Bot", 
             opt:"13", 
-            Blayout:true,
+            Blayout:false,
             message:"Here is your \ Seat Map"
           });
         dispatch(addMessage({
@@ -78,7 +138,8 @@ function BotChatBubble(props) {
                 seat_Tru_Classic : dataHandler["Tru Classic"],
                 seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
                 Fare: dataHandler.Fare,
-                Seat:dataHandler.Seat
+                Seat:dataHandler.Seat,
+                contact:dataHandler.number
               }
                 );
               dispatch(addMessage({
@@ -100,6 +161,12 @@ function BotChatBubble(props) {
             <p key={i}>{m}</p>
             <br/>
             </>))}
+            {props.contact !== undefined ? (<div>
+            <br/>
+            <hr style={{border: "dotted 1px #ff0100"}}/>
+            <br/>
+            Contact : <a  style={{color:"#ff0100", fontWeight:"bold"}} href={`tel:${props.contact}`}>{` ${props.contact}`}</a>
+            <br/></div>):""}
         </div>
         
         {/* Extra Bot Feature */}
@@ -458,14 +525,14 @@ function BotChatBubble(props) {
           {props.opt === "12" &&(<BookingDetails/>)}
           {props.opt === "13" &&(<TruJetSeatMap/>)}
           {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" ?
-          <button className="goBackButton" onClick={()=>{sendMessage("Go Back to Initial Options")}}>Go Back</button>:""}
+          <button className="goBackButton" onClick={()=>{sendMessage("Go Back")}}>Go Back</button>:""}
         {props.Blayout === false ?<p className="Bottime">16:54</p>:""}
         </div>
         {props.Blayout === true &&
         <div className="bigOption">
           {props.opt === "11" &&(<TicketSlider/>)}
           {props.opt === "14" &&(<DoubleTicketSlider/>)}
-          <button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back to Initial Options")}}>Go Back</button>
+          <button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back")}}>Go Back</button>
            <p className="Bottime">16:54</p>
         </div>
         }
