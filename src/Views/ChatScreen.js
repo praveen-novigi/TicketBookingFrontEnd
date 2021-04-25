@@ -58,7 +58,8 @@ function ChatScreen() {
     const [isTyping, setIsTyping]=useState(false);
     const [showMenu, setShowMenu]=useState(false);
     const dispatch = useDispatch();
-    const sendMessage=()=>{
+    const sendMessage=(e)=>{
+        e.preventDefault()
         const msg = messageStack;
         if( message === "View Seat Map"){
             msg.unshift( {type:"User", message:message});
@@ -167,6 +168,46 @@ function ChatScreen() {
     const togglePopUp = async()=>{
         setpopUp(!popUp)
     }
+    const goHome=(e)=>{
+        e.preventDefault()
+        const msg = messageStack;
+        userRequest("Go Back to Initial options").then((data) => {
+            if (data)if(data[0].custom === undefined) {
+                console.log(data[0].text, "err");
+                          msg.unshift(
+                            { type:"Bot", message:data[0].text});
+                          dispatch(addMessage({
+                            array:msg,
+                            length:msg.length
+                        }))
+            } else {
+                const dataHandler = data[0].custom[0];
+              msg.unshift(
+                { 
+                type:"Bot", 
+                opt:dataHandler.type, 
+                Blayout:false, 
+                message:dataHandler.text, 
+                menu:dataHandler.buttons, 
+                Cancellation:dataHandler.Cancellation,
+                ReIssuance:dataHandler.Reissuance,
+                BaggageDetails: dataHandler["Baggage Data"],
+                seat_Tru_Standard : dataHandler["Tru Standard"],
+                seat_Tru_Classic : dataHandler["Tru Classic"],
+                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                Fare: dataHandler.Fare,
+                Seat:dataHandler.Seat, 
+                contact:dataHandler.number
+                });
+              dispatch(addMessage({
+                array:msg,
+                length:msg.length
+            }))
+            }
+            setIsTyping(false);
+            setMessage("");
+          });
+    }
   return (
     <div className="container">
         {showMenu && <>
@@ -253,7 +294,7 @@ function ChatScreen() {
                 <img src={menu} className="menu" onClick={()=>{setShowMenu(true)}}/>
                 <div className="topBarBox">
                     <div className="buttonBox">
-                        <img src={homeActive} className='home' onClick={()=>alert('hi')}/>
+                        <img src={homeActive} className='home' onClick={goHome}/>
                         <img src={settings} className='settings'/>
                     </div>
                 </div>
@@ -327,16 +368,19 @@ function ChatScreen() {
                 </div>
             </div>
             <div className="typeLayout">
-                        <input className="inputBox" 
-                        type="text" 
-                        value={message} 
-                        placeholder="Type your message..."
-                        onChange={handleChange}
-                        />
+                        <form onSubmit={sendMessage}>
+                            <input className="inputBox"
+                            style={{width: '100%', height: '100%'}} 
+                            type="text" 
+                            value={message} 
+                            placeholder="Type your message..."
+                            onChange={handleChange}
+                            />
+                        </form>
                         <div className="recordButton">
                             <img src={microphone} className="recordLogo"/>
                         </div>
-                        <div className="sendButton" onClick={()=>sendMessage()}>
+                        <div className="sendButton" onClick={sendMessage}>
                             <img src={sendLogo} className="sendLogo"/>
                         </div>
                     </div>
