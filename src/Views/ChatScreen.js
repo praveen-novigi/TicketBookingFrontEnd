@@ -171,42 +171,34 @@ function ChatScreen() {
     const goHome=(e)=>{
         e.preventDefault()
         const msg = messageStack;
-        userRequest("Go Back to Initial options").then((data) => {
-            if (data)if(data[0].custom === undefined) {
-                console.log(data[0].text, "err");
-                          msg.unshift(
-                            { type:"Bot", message:data[0].text});
-                          dispatch(addMessage({
-                            array:msg,
-                            length:msg.length
-                        }))
-            } else {
-                const dataHandler = data[0].custom[0];
               msg.unshift(
-                { 
-                type:"Bot", 
-                opt:dataHandler.type, 
-                Blayout:false, 
-                message:dataHandler.text, 
-                menu:dataHandler.buttons, 
-                Cancellation:dataHandler.Cancellation,
-                ReIssuance:dataHandler.Reissuance,
-                BaggageDetails: dataHandler["Baggage Data"],
-                seat_Tru_Standard : dataHandler["Tru Standard"],
-                seat_Tru_Classic : dataHandler["Tru Classic"],
-                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
-                Fare: dataHandler.Fare,
-                Seat:dataHandler.Seat, 
-                contact:dataHandler.number
+                {
+                        type:"Bot", 
+                        opt:"initialoptions", 
+                        Blayout:false, 
+                        message:[
+                          "Hi! Welcome to TruJet. We are #Trulyfriendly.",
+                          "I am your AI powered assistant and I am glad to assist you."
+                      ], 
+                        menu:[{
+                          "payload": "FAQs",
+                          "title": "FAQs"
+                      }], 
+                        Cancellation:undefined,
+                        ReIssuance:undefined,
+                        BaggageDetails: undefined,
+                        seat_Tru_Standard : undefined,
+                        seat_Tru_Classic : undefined,
+                        seat_Tru_Max_Corporate : undefined,
+                        Fare: undefined,
+                        Seat:undefined
                 });
               dispatch(addMessage({
                 array:msg,
                 length:msg.length
             }))
-            }
             setIsTyping(false);
             setMessage("");
-          });
     }
   return (
     <div className="container">
