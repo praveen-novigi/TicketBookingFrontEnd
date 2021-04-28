@@ -28,7 +28,8 @@ function OptionSelection() {
         if(message !== "")
         {
         msg.unshift( {type:"User", message:message})
-        userRequest(message).then((data) => {
+        if(message === "FAQs")
+        {userRequest(message).then((data) => {
             if (data)if(data.error) {
               console.log(data.error, "err");
               dispatch(addMessage({
@@ -46,6 +47,15 @@ function OptionSelection() {
             }))
             }
           });
+        }else{
+            msg.unshift(
+                { type:"Bot", opt:'', Blayout:false, message:"Coming Soon...."});
+              dispatch(addMessage({
+                array:msg,
+                length:msg.length
+            }))
+        }
+
         }
     }
   return (
