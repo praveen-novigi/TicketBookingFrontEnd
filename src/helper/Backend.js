@@ -1,9 +1,10 @@
-const url= process.env.REACT_BACKEND_API_URL;
+const url= process.env.REACT_APP_BACKEND_API_URL;
+console.log(url)
 const sender_id = 'default';
 console.log(process.env);
 //ChatBot_API_Handling
 export const userRequest = (message) => {
-    return fetch("http://65.0.34.7:5006/webhooks/rest/webhook", {
+    return fetch(url, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
