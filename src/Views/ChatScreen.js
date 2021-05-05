@@ -281,7 +281,9 @@ function ChatScreen() {
             </div>
         </div></>) : 
         (<>
-        <div className="landBG" style={popUp?{borderTop: '0.25vh solid #ff0100', borderBottom: '0.25vh solid #ff0100',borderRight: '0.5vw solid #ff0100',borderLeft: '0.5vw solid #ff0100'}:{}}>
+        <div className="landBG" 
+        // style={popUp?{borderTop: '0.25vh solid rgb(100 97 97 / 27%)', borderBottom: '0.25vh solid rgb(100 97 97 / 27%)',borderRight: '0.5vw solid rgb(100 97 97 / 27%)',borderLeft: '0.5vw solid rgb(100 97 97 / 27%)'}:{}}
+        >
             <img src={popUp?BG2:''} style={{width:"122vw"}}/>
         </div>
         <div className="landOPAC"/>
@@ -301,7 +303,8 @@ function ChatScreen() {
                 <p style={{fontSize:"4.4334vh",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
             </div>)} */}
-            <div className="chatBox" style={popUp?{borderLeft: '2px solid #ff0100', borderRight: '2px solid #ff0100'}:{}}
+            <div className="chatBox" 
+            style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)'}:{}}
             //  style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}} temporarily changed due to ui issues
              >
                 <div className="scrollBox"
@@ -385,7 +388,8 @@ function ChatScreen() {
                             <img src={sendLogo} className="sendLogo"/>
                         </div>
                     </div>
-        <div style={{textAlign: 'center', fontSize: '10px'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
+        <div 
+            style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)',textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}:{textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
         </div>
         </>):""
         }<img className="popLogo" src={Bot} onClick={()=>{setpopUp(!popUp)}}/></>)}
