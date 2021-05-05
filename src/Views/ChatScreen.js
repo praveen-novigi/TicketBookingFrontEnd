@@ -275,7 +275,7 @@ function ChatScreen() {
             </div>
         </div></>) : 
         (<>
-        <div className="landBG">
+        <div className="landBG" style={popUp?{border: '2px solid #ff0100'}:{}}>
             <img src={popUp?BG2:''} style={{width:"122vw"}}/>
         </div>
         <div className="landOPAC"/>
@@ -283,11 +283,11 @@ function ChatScreen() {
         (<>
         <div className="landContentBox">
             <div className="topBar">
-                <img src={menu} className="menu" onClick={()=>{setShowMenu(true)}}/>
+                {/* <img src={menu} className="menu" onClick={()=>{setShowMenu(true)}}/> */}
                 <div className="topBarBox">
                     <div className="buttonBox">
                         <img src={homeActive} className='home' onClick={goHome}/>
-                        <img src={settings} className='settings'/>
+                        {/* <img src={settings} className='settings'/> */}
                     </div>
                 </div>
             </div>
@@ -295,7 +295,7 @@ function ChatScreen() {
                 <p style={{fontSize:"4.4334vh",fontFamily:"Roboto"}}>Hi, Anvi</p>
                 <p>Good Evening. My name is Novigi, your personal assistant.</p>
             </div>)} */}
-            <div className="chatBox"
+            <div className="chatBox" style={popUp?{borderLeft: '2px solid #ff0100', borderRight: '2px solid #ff0100'}:{}}
             //  style={Service.selected ?{height:"88.3vh",marginTop:"1.4631vh"}:{}} temporarily changed due to ui issues
              >
                 <div className="scrollBox"
@@ -350,9 +350,11 @@ function ChatScreen() {
                             classic_seat={o.seat_Tru_Classic}
                             max_corp_seat={o.seat_Tru_Max_Corporate}
                             contact={o.contact}
+                            link={o.link}
                             seatMap={(o.opt === "standard_seat" || o.opt === "classic_seat" || o.opt === "corporate_seat")?true:false}
                             fare={o.Fare}
                             seat={o.Seat}
+                            parent={o.parent}
                             />
                             :<UserChatBubble key={i} message={o.message}/>)
                         )
@@ -369,15 +371,15 @@ function ChatScreen() {
                             onChange={handleChange}
                             />
                         </form>
-                        <div className="recordButton">
+                        {/* <div className="recordButton">
                             <img src={microphone} className="recordLogo"/>
-                        </div>
+                        </div> */}
                         <div className="sendButton" onClick={sendMessage}>
                             <img src={sendLogo} className="sendLogo"/>
                         </div>
                     </div>
+        <div style={{textAlign: 'center', fontSize: '10px'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
         </div>
-        
         </>):""
         }<img className="popLogo" src={Bot} onClick={()=>{setpopUp(!popUp)}}/></>)}
     </div>

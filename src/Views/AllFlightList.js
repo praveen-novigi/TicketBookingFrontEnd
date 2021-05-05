@@ -119,11 +119,11 @@ function AllFlightList() {
         <div className="landOPAC"/>
         <div className="landContentBox">
             <div className="topBar">
-                <img src={menu} className="menu"/>
+                {/* <img src={menu} className="menu"/> */}
                 <div className="topBarBox">
                     <div className="buttonBox">
                         <img src={homeActive} className='home' onClick={()=>alert('hi')}/>
-                        <img src={settings} className='settings'/>
+                        {/* <img src={settings} className='settings'/> */}
                     </div>
                 </div>
             </div>

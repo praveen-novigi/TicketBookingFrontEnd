@@ -8,8 +8,8 @@
 }
 /*landing page*/
 .landBG{
-  width: calc(100*0.230rem);
-  height: calc(100*0.40rem);
+  width: calc(99*0.230rem);
+  height: calc(99.5*0.40rem);
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -151,8 +151,9 @@
   height: calc(7.38916256*0.40rem);
   width: 100%;
   display: none;
-  grid-template-columns: auto calc(34.667*0.230rem);
-  justify-content: center;
+  /* grid-template-columns: auto calc(34.667*0.230rem); */
+  /* justify-content: center; */
+  justify-content: flex-end;
 }
 .menu{
   width: calc(7.2*0.230rem);
@@ -162,7 +163,7 @@
   margin-right: calc(45.84*0.230rem);
 }
 .topBarBox{
-  width: calc(35.733*0.230rem);
+  width: calc(20.733*0.230rem);
   height: calc(7.38916*0.40rem);
   grid-column: 2/3;
   background: #FFFFFF;
@@ -171,7 +172,7 @@
 }
 .buttonBox{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   height: 100%;
 }
 .home{
@@ -241,7 +242,7 @@
   background: #F5F5F5 ;
   padding: calc(1.60098*0.40rem) calc(3.4667*0.230rem) calc(0.738916*0.40rem) calc(4*0.230rem);
   opacity: 1;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: Roboto;
 }
 .option{
@@ -269,7 +270,7 @@
   border-radius: 25px;
   background: transparent;
   color: #ff0100;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .bigOption{
   grid-row: 2/3;
@@ -1819,8 +1820,8 @@ outline: none!important;
     }
     /*landing page*/
     .landBG{
-      width: 100vw;
-      height: 100vh;
+      width: 99vw;
+      height: 99.5vh;
       position: relative;
       z-index: 1;
       overflow: hidden;
@@ -1962,8 +1963,8 @@ outline: none!important;
       height: 7.38916256vh;
       width: 100%;
       display: grid;
-      grid-template-columns: auto 34.667vw;
-      justify-content: center;
+      /* grid-template-columns: auto 34.667vw; */
+      /* justify-content: center; */
     }
     .menu{
       width: 7.2vw;
@@ -1973,7 +1974,7 @@ outline: none!important;
       margin-right: 45.84vw;
     }
     .topBarBox{
-      width: 35.733vw;
+      width: 20.733vw;
       height: 7.38916vh;
       grid-column: 2/3;
       background: #FFFFFF;
@@ -1982,7 +1983,7 @@ outline: none!important;
     }
     .buttonBox{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       height: 100%;
     }
     .home{
@@ -2005,14 +2006,15 @@ outline: none!important;
       display: block;
     }
     .chatBox{
-      border-radius: 50px 0 0 0;
+      /* border-radius: 50px 0 0 0; */
       background-color: white;
       z-index: 4;
       /* height: 69.50246305vh; temporarily changed due to UI issues*/
       height: 86.3vh;
       padding-left: 9.6vw;
       /* margin-top: 2.463054vh; temporarily changed due to UI issues */
-      margin-top:1.4631vh;
+      margin-top:1vh;
+      padding-top: 0.15vh;
       overflow: hidden;
     }
     .scrollBox{
@@ -2057,7 +2059,7 @@ outline: none!important;
       background: #F5F5F5 ;
       padding: 1.60098vh 3.4667vw 0.738916vh 4vw;
       opacity: 1;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: Roboto;
     }
     .option{
@@ -2914,7 +2916,7 @@ outline: none!important;
     }
     
     .fareMessage {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: normal;
       font-family: Roboto;
       column-gap: 2.133vw;
