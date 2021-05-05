@@ -1120,7 +1120,7 @@ outline: none!important;
   grid-template-columns: calc(6.6677*0.230rem) auto;
   justify-content: start;
   align-items: center;
-  margin-bottom: calc(0.6157*0.40rem);
+  margin-bottom: calc(1*0.40rem);
 }
 
 .fareMessage::before {
@@ -2924,7 +2924,7 @@ outline: none!important;
       grid-template-columns: 6.6677vw auto;
       justify-content: start;
       align-items: center;
-      margin-bottom: 0.6157vh;
+      margin-bottom: 1vh;
     }
     
     .fareMessage::before {
