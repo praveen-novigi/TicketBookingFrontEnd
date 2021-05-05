@@ -275,7 +275,7 @@ function ChatScreen() {
             </div>
         </div></>) : 
         (<>
-        <div className="landBG" style={popUp?{border: '2px solid #ff0100'}:{}}>
+        <div className="landBG" style={popUp?{borderTop: '0.25vh solid #ff0100', borderBottom: '0.25vh solid #ff0100',borderRight: '0.5vw solid #ff0100',borderLeft: '0.5vw solid #ff0100'}:{}}>
             <img src={popUp?BG2:''} style={{width:"122vw"}}/>
         </div>
         <div className="landOPAC"/>

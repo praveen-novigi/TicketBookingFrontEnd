@@ -49,7 +49,7 @@ function OptionSelection() {
           });
         }else{
             msg.unshift(
-                { type:"Bot", opt:'', Blayout:false, message:"Oh! I am sorry, unfortunately I&#39;m not currently equipped to assist you with this. I am in the process of updating myself. I request you to kindly contact the call center at the following phone no. 040-40904090 or visit us at www.trujet.com.", contact:"040-40904090", link:'www.trujet.com'});
+                { type:"Bot", opt:'', Blayout:false, message:"Oh! I am sorry, unfortunately I am not currently equipped to assist you with this. I am in the process of updating myself. I request you to kindly contact the call center at the following phone no. 040-40904090 or visit us at www.trujet.com.", contact:"040-40904090", link:'www.trujet.com'});
               dispatch(addMessage({
                 array:msg,
                 length:msg.length
