@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../App.css';
 import menu from '../assests/images/menu.svg';
 import homeActive from '../assests/images/homeActive.svg';
@@ -40,6 +40,11 @@ import {useDispatch} from 'react-redux';
 import {addMessage} from '../Redux/actions/messageArrayActions';
 
 function ChatScreen() {
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
     const [popUp, setpopUp]=useState(false);
     const messageStack = useSelector(state => state.messageArray.array, shallowEqual);
     const msglength = useSelector(state => state.messageArray.length, shallowEqual);
@@ -52,6 +57,7 @@ function ChatScreen() {
         if(messageStack.length % 2 !== 0){
             console.log()//need to initiate a reload here
         }
+        scrollToBottom()
     },[msglength, popUp])
     const Service = useSelector(state => state.todo);
     const [message, setMessage]=useState("");
@@ -303,6 +309,7 @@ function ChatScreen() {
                 //         Service.selected ?{height:"80.6798vh"}:{} temporarily changed due to ui issues
                 //         }
                         >
+                            <div ref={messagesEndRef} />
                     {isTyping && <TypingBubble/>}
                     {/* {Service.selected &&(<>
                     <BotChatBubble opt="13" Blayout={false} message="What else may I assist you with further?"/>
