@@ -78,7 +78,8 @@ function ChatScreen() {
               type:"Bot", 
               opt:"13", 
               Blayout:false,
-              message:"Here is your Seat Map"
+              message:"Here is your Seat Map",
+              service: Service.service,
             });
           dispatch(addMessage({
               array:msg,
@@ -115,7 +116,8 @@ function ChatScreen() {
                     seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
                     Fare: dataHandler.Fare,
                     Seat:dataHandler.Seat, 
-                    contact:dataHandler.number
+                    contact:dataHandler.number,
+                    service: Service.service,
                     });
                   dispatch(addMessage({
                     array:msg,
@@ -151,7 +153,8 @@ function ChatScreen() {
                 seat_Tru_Classic : dataHandler["Tru Classic"],
                 seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
                 Fare: dataHandler.Fare,
-                Seat:dataHandler.Seat
+                Seat:dataHandler.Seat,
+                service: Service.service,
                 });
               dispatch(addMessage({
                 array:msg,
@@ -342,8 +345,8 @@ function ChatScreen() {
                     <BotChatBubble opt="3" Blayout={false} options={opts} message={`Thank you for choosing Air Asia Airlines. How may I help with you with further?`}/>
                     <BotChatBubble opt="2" Blayout={false} message="Which flight do you have your query with?"/>
                     <UserChatBubble message="I want to enquire about a flight"/></>)}
-                    <BotChatBubble opt="initialoptions" Blayout={false} message="Hi Avni, What can I help you with?"/> */}
-                    
+                    <BotChatBubble opt="initialoptions" Blayout={false} message="Hi Avni, What can I help you with?"/>
+                     */}
                     {
                         messageStack&&msgLength>0&&messageStack.map((o,i)=>
                         
@@ -365,6 +368,7 @@ function ChatScreen() {
                             fare={o.Fare}
                             seat={o.Seat}
                             parent={o.parent}
+                            service={o.service}
                             />
                             :<UserChatBubble key={i} message={o.message}/>)
                         )

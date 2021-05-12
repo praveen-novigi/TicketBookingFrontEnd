@@ -35,7 +35,7 @@ function TicketListNew(props){
                                     <div className="row2col2">
                                         <p>{o.travelTime}</p>
                                         <img src={ticketFlight} className="ticketFlightList"/>
-                                        <p>1 flight via New Delhi</p>
+                                        {/* <p>1 flight via New Delhi</p> */}
                                     </div>
                                     <div className="row2col3">
                                         <p className="time">{o.arrivalTime}</p>

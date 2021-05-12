@@ -21,6 +21,7 @@ import BaggageDetails from './BaggageDetails';
 import TruJetSeatMap from './TruJetSeatMap';
 
 function BotChatBubble(props) {
+  const Service = useSelector(state => state.todo);
   const messageStack = useSelector(state => state.messageArray.array, shallowEqual);
     const msglength = useSelector(state => state.messageArray.length, shallowEqual);
     const [msgLength, setMsgLength] = useState(messageStack.length);
@@ -67,7 +68,8 @@ function BotChatBubble(props) {
                 seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
                 Fare: dataHandler.Fare,
                 Seat:dataHandler.Seat, 
-                contact:dataHandler.number
+                contact:dataHandler.number,
+                service: Service.service,
                 });
               dispatch(addMessage({
                 array:msg,
@@ -108,7 +110,8 @@ function BotChatBubble(props) {
             type:"Bot", 
             opt:"13", 
             Blayout:false,
-            message:"Here is your Seat Map"
+            message:"Here is your Seat Map",
+            service: Service.service,
           });
         dispatch(addMessage({
             array:msg,
@@ -147,7 +150,8 @@ function BotChatBubble(props) {
                 Fare: dataHandler.Fare,
                 Seat:dataHandler.Seat,
                 contact:dataHandler.number,
-                parent: hist
+                parent: hist,
+                service: Service.service,
               }
                 );
               dispatch(addMessage({
@@ -539,7 +543,7 @@ function BotChatBubble(props) {
           {props.opt === "5" &&(<MenuList/>)}
           {props.opt === "12" &&(<BookingDetails/>)}
           {props.opt === "13" &&(<TruJetSeatMap/>)}
-          {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" ?
+          {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" && props.service === "FAQs"?
           <button className="goBackButton" onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>:""}
         {props.Blayout === false ?<p className="Bottime">16:54</p>:""}
         </div>
@@ -547,7 +551,7 @@ function BotChatBubble(props) {
         <div className="bigOption">
           {props.opt === "11" &&(<TicketSlider/>)}
           {props.opt === "14" &&(<DoubleTicketSlider/>)}
-          <button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>
+          { props.service === 'FAQs' ? (<button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>):""}
            <p className="Bottime">16:54</p>
         </div>
         }

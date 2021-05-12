@@ -805,7 +805,7 @@ outline: none!important;
   margin-bottom: calc(1.23152709*0.40rem);
   display: grid;
   grid-template-columns: 75% 25%;
-  height: calc(11.0837*0.5rem);
+  height: calc(13.0837*0.5rem);
   text-align: left;
   font: normal 1.2rem Roboto;
   letter-spacing: 0px;
@@ -862,7 +862,7 @@ outline: none!important;
   align-self: center;
 }
 .place{
-  font: 1.1rem medium;
+  font: 0.9rem medium;
   font-family: Roboto;
   color: #BEBEBE;
   justify-self: center;
@@ -1358,7 +1358,7 @@ outline: none!important;
   .TicketBookingBox{
     width:calc(71.46667*0.230rem);
     min-height: calc(23.76847291*0.40rem);
-    max-height: calc(50.53694581*0.40rem);
+    max-height: calc(60.53694581*0.40rem);
     overflow: hidden;
     padding: calc(1.23152709*0.40rem) 0;
     display: grid;
@@ -1375,7 +1375,7 @@ outline: none!important;
     text-align: center;
   }
   .fromTo{
-    font: 1.1rem medium;
+    font: 0.8rem medium;
     font-family: Roboto;
     color: #BEBEBE;
     font-weight: 700;
@@ -2609,7 +2609,7 @@ outline: none!important;
       margin-bottom: 1.23152709vh;
       display: grid;
       grid-template-columns: 75% 25%;
-      height: 11.0837vh;
+      height: 13.0837vh;
       text-align: left;
       font: normal 1.2rem Roboto;
       letter-spacing: 0px;
@@ -2667,7 +2667,7 @@ outline: none!important;
       align-self: center;
     }
     .place{
-      font: 1.1rem medium;
+      font: 0.9rem medium;
       font-family: Roboto;
       color: #BEBEBE;
       justify-self: center;
@@ -3161,7 +3161,7 @@ outline: none!important;
       .TicketBookingBox{
         width:67.46667vw;
         min-height: 23.76847291vh;
-        max-height: 50.53694581vh;
+        max-height: 60.53694581vh;
         overflow: hidden;
         padding: 1.23152709vh 0;
         display: grid;
@@ -3178,7 +3178,7 @@ outline: none!important;
         text-align: center;
       }
       .fromTo{
-        font: 1.1rem medium;
+        font: 0.8rem medium;
         font-family: Roboto;
         color: #BEBEBE;
         font-weight: 700;

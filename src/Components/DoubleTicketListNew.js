@@ -35,7 +35,7 @@ function DoubleTicketListNew(props){
                                     <div className="row2col2">
                                         <p>{o.go.travelTime}</p>
                                         <img src={ticketFlight} className="ticketFlightList"/>
-                                        <p>1 flight via New Delhi</p>
+                                        {/* <p>1 flight via New Delhi</p> */}
                                     </div>
                                     <div className="row2col3">
                                         <p className="time">{o.go.arrivalTime}</p>
@@ -67,7 +67,7 @@ function DoubleTicketListNew(props){
                                     <div className="row2col2">
                                         <p>{o.return.travelTime}</p>
                                         <img src={ticketFlight} className="ticketFlightList" style={{transform:"rotate(180deg)"}}/>
-                                        <p>1 flight via New Delhi</p>
+                                        {/* <p>1 flight via New Delhi</p> */}
                                     </div>
                                     <div className="row2col3">
                                         <p className="time">{o.return.arrivalTime}</p>
