@@ -19,6 +19,7 @@ import {useSelector, shallowEqual} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import BaggageDetails from './BaggageDetails';
 import TruJetSeatMap from './TruJetSeatMap';
+import SearchTab from './SearchTab';
 
 function BotChatBubble(props) {
   const Service = useSelector(state => state.todo);
@@ -187,6 +188,7 @@ function BotChatBubble(props) {
         
         {/* Extra Bot Feature */}
         <div className="option">
+          {props.opt === '0' && <SearchTab/>}
           {props.opt === "initialoptions" && (<OptionSelection/>)}
           {props.opt === "2" &&(<FlightList/>)}
           
@@ -207,7 +209,6 @@ function BotChatBubble(props) {
           )}
           {props.opt === "standard_seat" && (
             <>
-            {console.log(props)}
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Standard Seats</p>
                 <ul className="fareMessageList">
@@ -219,7 +220,6 @@ function BotChatBubble(props) {
           )}
           {props.opt === "classic_seat" && (
             <>
-            {console.log(props)}
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Classic Seats</p>
                 <ul className="fareMessageList">
@@ -231,7 +231,6 @@ function BotChatBubble(props) {
           )}
           {props.opt === "corporate_seat" && (
             <>
-            {console.log(props)}
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Corporate Seats</p>
                 <ul className="fareMessageList">

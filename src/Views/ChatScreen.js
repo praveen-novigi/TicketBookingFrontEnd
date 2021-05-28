@@ -317,7 +317,8 @@ function ChatScreen() {
                         >
                             <div ref={messagesEndRef} />
                     {isTyping && <TypingBubble/>}
-                    {/* {Service.selected &&(<>
+                    {Service.selected &&(<>
+                    <BotChatBubble opt="0" Blayout={false} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="13" Blayout={false} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="14" Blayout={true} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="12" Blayout={false} message="What else may I assist you with further?"/>
@@ -346,8 +347,8 @@ function ChatScreen() {
                     <BotChatBubble opt="2" Blayout={false} message="Which flight do you have your query with?"/>
                     <UserChatBubble message="I want to enquire about a flight"/></>)}
                     <BotChatBubble opt="initialoptions" Blayout={false} message="Hi Avni, What can I help you with?"/>
-                     */}
-                    {
+                    
+                    {/* {
                         messageStack&&msgLength>0&&messageStack.map((o,i)=>
                         
                             (o.type==="Bot"?<BotChatBubble
@@ -372,7 +373,7 @@ function ChatScreen() {
                             />
                             :<UserChatBubble key={i} message={o.message}/>)
                         )
-                    }
+                    } */}
                 </div>
             </div>
             <div className="typeLayout">
