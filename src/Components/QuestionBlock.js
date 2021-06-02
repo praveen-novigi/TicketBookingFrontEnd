@@ -79,7 +79,7 @@ function QuestionBlock(props){
                               <ul className="fareMessageList">
                                 {classic.map((m,i) => <><li className="fareMessage" key={i}>
                                     {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
-                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                                    {m.text &&(`${m.text}`)}
                                     {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
                                     </li></>)}
                                 
@@ -90,7 +90,7 @@ function QuestionBlock(props){
                               <ul className="fareMessageList">
                                 {max.map((m,i) => <><li className="fareMessage" key={i}>
                                     {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
-                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                                    {m.text &&(`${m.text}`)}
                                     {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
                                     </li></>)}
                                 

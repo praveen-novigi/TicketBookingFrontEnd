@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import TicketListNew from './TicketListNew';
 import Slider from "react-slick";
 import QuestionList from './QuestionList';
+import QuestionBlock from './QuestionBlock';
 
 
 function Arrow(props) {
@@ -26,6 +27,7 @@ function Arrow(props) {
     const flights = props.qarray
     const noOfFlights=3;
     const [totalFlights, setTotalFlights]=useState(flights.length);
+    const [viewAll, setViewAll]=useState(false);
     const [lastPage, setLastPage]=useState(flights.length % noOfFlights);
     const [noPage, setNoPage]=useState(flights.length - (flights.length % noOfFlights));
     const sliderArray =(flights) =>{
@@ -33,7 +35,6 @@ function Arrow(props) {
         for(let i=0;i<noPage;i++){
             var ar=[];
             for(let j=0;j<noOfFlights;j++){
-              console.log(flights[i*noOfFlights + j])
                 if(flights[i*noOfFlights + j] !== undefined)
                 
                     ar.push(flights[i*noOfFlights + j])
@@ -43,7 +44,6 @@ function Arrow(props) {
         }
         var Lar=[];
         for(let z=(noPage*noOfFlights);z<totalFlights;z++){
-          console.log(z)
             if(flights[z] !== undefined){
                 Lar.push(flights[z]);
                 if(z === (lastPage - 1)){
@@ -51,7 +51,6 @@ function Arrow(props) {
                 }
             }
         }
-        console.log(slider)
         return slider
     }
     const list=sliderArray(flights);
@@ -73,7 +72,7 @@ function Arrow(props) {
         prevArrow:<Arrow type="prev" />,
         appendDots: dots => (
             <div>
-              <button key={dots} className="viewAllFlights" onClick={()=>history.push("/tickets")}>View All</button>
+              <button key={dots} className="viewAllFlights" onClick={()=>setViewAll(true)}>View All</button>
             </div>
           ),
           customPaging: i => (
@@ -83,7 +82,7 @@ function Arrow(props) {
     return (
         <div>
         <div className="ticketSlider">
-        <Slider {...settings}>
+        {!viewAll && (<Slider {...settings}>
         {list.map((li,i)=>{
                 return (
                     <div className="questionList">
@@ -91,7 +90,22 @@ function Arrow(props) {
                     </div>
                 )
             })}
-        </Slider>
+        </Slider>)}
+        {viewAll && (<>
+        <div className="questionList">
+          {
+          flights.map((o,i)=>{return(<>
+              <QuestionBlock question={o.question} answer={o.answer}/>
+          </>)
+          })
+        }
+        </div>
+        <div>
+        <button className="viewAllFlights" onClick={()=>setViewAll(false)}>Reduce</button>
+      </div>
+      </>
+        )
+        }
       </div>
         </div>
     );
