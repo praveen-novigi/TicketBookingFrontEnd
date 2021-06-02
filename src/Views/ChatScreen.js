@@ -111,9 +111,9 @@ function ChatScreen() {
                     Cancellation:dataHandler.Cancellation,
                     ReIssuance:dataHandler.Reissuance,
                     BaggageDetails: dataHandler["Baggage Data"],
-                    seat_Tru_Standard : dataHandler["Tru Standard"],
+                    seat_Tru_Standard : dataHandler["Tru Saver"],
                     seat_Tru_Classic : dataHandler["Tru Classic"],
-                    seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
+                    seat_Tru_Max_Corporate : dataHandler["Tru Max"],
                     Fare: dataHandler.Fare,
                     Seat:dataHandler.Seat, 
                     contact:dataHandler.number,
@@ -138,28 +138,50 @@ function ChatScreen() {
                             length:msg.length
                         }))
             } else {
-                const dataHandler = data[0].custom[0];
-              msg.unshift(
-                { 
-                type:"Bot", 
-                opt:dataHandler.type, 
-                Blayout:false, 
-                message:dataHandler.text, 
-                menu:dataHandler.buttons, 
-                Cancellation:dataHandler.Cancellation,
-                ReIssuance:dataHandler.Reissuance,
-                BaggageDetails: dataHandler["Baggage Data"],
-                seat_Tru_Standard : dataHandler["Tru Standard"],
-                seat_Tru_Classic : dataHandler["Tru Classic"],
-                seat_Tru_Max_Corporate : dataHandler["Tru Max Corporate"],
-                Fare: dataHandler.Fare,
-                Seat:dataHandler.Seat,
-                service: Service.service,
-                });
-              dispatch(addMessage({
-                array:msg,
-                length:msg.length
-            }))
+                if(data[0].custom.length > 1){
+                    const dataHandler = data[0].custom[data[0].custom.length - 1];
+                    console.log(dataHandler,message,"opts")
+                    msg.unshift(
+                      { 
+                      type:"Bot", 
+                      opt:dataHandler.type, 
+                      Blayout:true, 
+                      message:dataHandler.text, 
+                      questionArray: data[0].custom,
+                    }
+                    );
+                  dispatch(addMessage({
+                    array:msg,
+                    length:msg.length
+                }))
+                }
+                else{
+                  const dataHandler = data[0].custom[0];
+                  console.log(dataHandler,message,"opts")
+                  msg.unshift(
+                    { 
+                    type:"Bot", 
+                    opt:dataHandler.type, 
+                    Blayout:false, 
+                    message:dataHandler.text, 
+                    menu:dataHandler.buttons, 
+                    Cancellation:dataHandler.Cancellation,
+                    ReIssuance:dataHandler.Reissuance,
+                    BaggageDetails: dataHandler["Baggage Data"],
+                    seat_Tru_Standard : dataHandler["Tru Saver"],
+                    seat_Tru_Classic : dataHandler["Tru Classic"],
+                    seat_Tru_Max_Corporate : dataHandler["Tru Max"],
+                    Fare: dataHandler.Fare,
+                    Seat:dataHandler.Seat,
+                    contact:dataHandler.number,
+                    service: Service.service,
+                  }
+                  );
+                dispatch(addMessage({
+                  array:msg,
+                  length:msg.length
+              }))
+            }
             }
             setIsTyping(false);
             setMessage("");
@@ -317,7 +339,7 @@ function ChatScreen() {
                         >
                             <div ref={messagesEndRef} />
                     {isTyping && <TypingBubble/>}
-                    {Service.selected &&(<>
+                    {/* {Service.selected &&(<>
                     <BotChatBubble opt="0" Blayout={false} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="13" Blayout={false} message="What else may I assist you with further?"/>
                     <BotChatBubble opt="14" Blayout={true} message="What else may I assist you with further?"/>
@@ -346,15 +368,16 @@ function ChatScreen() {
                     <BotChatBubble opt="3" Blayout={false} options={opts} message={`Thank you for choosing Air Asia Airlines. How may I help with you with further?`}/>
                     <BotChatBubble opt="2" Blayout={false} message="Which flight do you have your query with?"/>
                     <UserChatBubble message="I want to enquire about a flight"/></>)}
-                    <BotChatBubble opt="initialoptions" Blayout={false} message="Hi Avni, What can I help you with?"/>
+                    <BotChatBubble opt="initialoptions" Blayout={false} message="Hi Avni, What can I help you with?"/> */}
                     
-                    {/* {
+                    {
                         messageStack&&msgLength>0&&messageStack.map((o,i)=>
                         
                             (o.type==="Bot"?<BotChatBubble
                             key={i}
                             opt={o.opt} 
-                            options={o.menu} 
+                            options={o.menu}
+                            qarray={o.questionArray} 
                             Blayout={o.Blayout} 
                             message={o.message} 
                             cancellation={o.Cancellation} 
@@ -373,7 +396,7 @@ function ChatScreen() {
                             />
                             :<UserChatBubble key={i} message={o.message}/>)
                         )
-                    } */}
+                    }
                 </div>
             </div>
             <div className="typeLayout">

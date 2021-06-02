@@ -34,7 +34,7 @@ function SearchTab() {
   };
  
   return (<>
-    <div className="menuList" style={selectedValue?{padding: '1rem'}:{padding: '1rem', height: '6rem'}}>
+    <div className="menuList" style={selectedValue?{padding: '1rem'}:{padding: '1rem', height: '8rem'}}>
       <AsyncSelect
         cacheOptions
         defaultOptions

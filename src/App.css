@@ -788,6 +788,13 @@ outline: none!important;
   max-height: max-content!important;
   overflow: hidden;
 }
+.questionList{
+  max-height: max-content!important;
+  overflow: hidden;
+  width: 90% !important;
+  border-radius: 1rem !important;
+  box-shadow: 1px 1px 10px #00000021;
+}
 .eachFlight{
   display: grid;
   grid-template-columns: 1fr 20%;
@@ -2592,6 +2599,13 @@ outline: none!important;
       max-height: max-content!important;
       overflow: hidden;
     }
+    .questionList{
+      max-height: max-content!important;
+      overflow: hidden;
+      width: 90% !important;
+      border-radius: 1rem !important;
+      box-shadow: 1px 1px 10px #00000021;
+    }
     .eachFlight{
       display: grid;
       grid-template-columns: 1fr 20%;
@@ -3637,4 +3651,8 @@ outline: none!important;
 }
 .css-tj5bde-Svg{
   fill:#ff0100  !important;
+}
+.css-26l3qy-menu div{
+  height: 5rem;
+  /* overflow-y: scroll; */
 }
