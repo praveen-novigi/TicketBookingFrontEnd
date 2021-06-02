@@ -54,7 +54,11 @@ function QuestionBlock(props){
                             }
                             {type === "objectArray" && (
                                 <ul className="fareMessageList">
-                                {arr.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
+                                {arr.map((m,i) => <><li className="fareMessage" key={i}>
+                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                                    </li></>)}
                                 
                               </ul>
                             )}
@@ -62,21 +66,33 @@ function QuestionBlock(props){
                             Tru Saver 
                                 {saver && (<>
                                 <ul className="fareMessageList">
-                                {saver.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
+                                {saver.map((m,i) => <><li className="fareMessage" key={i}>
+                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                                    </li></>)}
                                 
                               </ul>
                               </>)}
                               {classic && (<>
                               Tru Classic
                               <ul className="fareMessageList">
-                                {classic.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
+                                {classic.map((m,i) => <><li className="fareMessage" key={i}>
+                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                                    </li></>)}
                                 
                               </ul>
                               </>)}
                               {max && (<>
                               Tru Max
                               <ul className="fareMessageList">
-                                {max.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
+                                {max.map((m,i) => <><li className="fareMessage" key={i}>
+                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                                    </li></>)}
                                 
                               </ul>
                               </>)}

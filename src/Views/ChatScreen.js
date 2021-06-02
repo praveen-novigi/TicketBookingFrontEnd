@@ -155,6 +155,74 @@ function ChatScreen() {
                     length:msg.length
                 }))
                 }
+                else if(data[0].custom[0].general_queries && data[0].custom[0].general_queries.length > 1){
+                    const dataHandler = data[0].custom[0].general_queries[data[0].custom[0].general_queries.length - 1];
+                    console.log(dataHandler,message,"opts")
+                    msg.unshift(
+                      { 
+                      type:"Bot", 
+                      opt:data[0].custom[0].type, 
+                      Blayout:true, 
+                      message:data[0].custom[0].text, 
+                      questionArray: data[0].custom[0].general_queries,
+                    }
+                    );
+                  dispatch(addMessage({
+                    array:msg,
+                    length:msg.length
+                }))
+                }
+                else if(data[0].custom[0].refund_queries && data[0].custom[0].refund_queries.length > 1){
+                  const dataHandler = data[0].custom[0].refund_queries[data[0].custom[0].refund_queries.length - 1];
+                  console.log(dataHandler,message,"opts")
+                  msg.unshift(
+                    { 
+                    type:"Bot", 
+                    opt:data[0].custom[0].type, 
+                    Blayout:true, 
+                    message:data[0].custom[0].text, 
+                    questionArray: data[0].custom[0].refund_queries,
+                  }
+                  );
+                dispatch(addMessage({
+                  array:msg,
+                  length:msg.length
+              }))
+              }
+              else if(data[0].custom[0].special_services && data[0].custom[0].special_services.length > 1){
+                const dataHandler = data[0].custom[0].special_services[data[0].custom[0].special_services.length - 1];
+                console.log(dataHandler,message,"opts")
+                msg.unshift(
+                  { 
+                  type:"Bot", 
+                  opt:data[0].custom[0].type, 
+                  Blayout:true, 
+                  message:data[0].custom[0].text, 
+                  questionArray: data[0].custom[0].special_services,
+                }
+                );
+              dispatch(addMessage({
+                array:msg,
+                length:msg.length
+            }))
+            }
+              else if(data[0].custom[0].seat && data[0].custom[0].seat.length > 1){
+                const dataHandler = data[0].custom[0].seat[data[0].custom[0].seat.length - 1];
+                console.log(dataHandler,message,"opts")
+                msg.unshift(
+                  { 
+                  type:"Bot", 
+                  opt:data[0].custom[0].type, 
+                  Blayout:true, 
+                  message:data[0].custom[0].text, 
+                  questionArray: data[0].custom[0].seat,
+                }
+                );
+              dispatch(addMessage({
+                array:msg,
+                length:msg.length
+            }))
+            }
                 else{
                   const dataHandler = data[0].custom[0];
                   console.log(dataHandler,message,"opts")
