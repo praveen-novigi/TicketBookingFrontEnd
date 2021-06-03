@@ -138,91 +138,24 @@ function ChatScreen() {
                             length:msg.length
                         }))
             } else {
-                if(data[0].custom.length > 1){
-                    const dataHandler = data[0].custom[data[0].custom.length - 1];
-                    console.log(dataHandler,message,"opts")
-                    msg.unshift(
-                      { 
-                      type:"Bot", 
-                      opt:dataHandler.type, 
-                      Blayout:true, 
-                      message:dataHandler.text, 
-                      questionArray: data[0].custom,
-                    }
-                    );
+              if(data[0].custom[0].qna && data[0].custom[0].qna.length > 0){
+                const dataHandler = data[0].custom[0].qna[data[0].custom[0].qna.length - 1];
+                console.log(dataHandler,message,"opts")
+                msg.unshift(
+                  { 
+                  type:"Bot", 
+                  opt:data[0].custom[0].type ? data[0].custom[0].type : dataHandler.type,
+                  Blayout:true, 
+                  message:data[0].custom[0].text ? data[0].custom[0].text : dataHandler.text, 
+                  questionArray: data[0].custom[0].qna,
+                }
+                );
                   dispatch(addMessage({
                     array:msg,
                     length:msg.length
                 }))
                 }
-                else if(data[0].custom[0].general_queries && data[0].custom[0].general_queries.length > 1){
-                    const dataHandler = data[0].custom[0].general_queries[data[0].custom[0].general_queries.length - 1];
-                    console.log(dataHandler,message,"opts")
-                    msg.unshift(
-                      { 
-                      type:"Bot", 
-                      opt:data[0].custom[0].type, 
-                      Blayout:true, 
-                      message:data[0].custom[0].text, 
-                      questionArray: data[0].custom[0].general_queries,
-                    }
-                    );
-                  dispatch(addMessage({
-                    array:msg,
-                    length:msg.length
-                }))
-                }
-                else if(data[0].custom[0].refund_queries && data[0].custom[0].refund_queries.length > 1){
-                  const dataHandler = data[0].custom[0].refund_queries[data[0].custom[0].refund_queries.length - 1];
-                  console.log(dataHandler,message,"opts")
-                  msg.unshift(
-                    { 
-                    type:"Bot", 
-                    opt:data[0].custom[0].type, 
-                    Blayout:true, 
-                    message:data[0].custom[0].text, 
-                    questionArray: data[0].custom[0].refund_queries,
-                  }
-                  );
-                dispatch(addMessage({
-                  array:msg,
-                  length:msg.length
-              }))
-              }
-              else if(data[0].custom[0].special_services && data[0].custom[0].special_services.length > 1){
-                const dataHandler = data[0].custom[0].special_services[data[0].custom[0].special_services.length - 1];
-                console.log(dataHandler,message,"opts")
-                msg.unshift(
-                  { 
-                  type:"Bot", 
-                  opt:data[0].custom[0].type, 
-                  Blayout:true, 
-                  message:data[0].custom[0].text, 
-                  questionArray: data[0].custom[0].special_services,
-                }
-                );
-              dispatch(addMessage({
-                array:msg,
-                length:msg.length
-            }))
-            }
-              else if(data[0].custom[0].seat && data[0].custom[0].seat.length > 1){
-                const dataHandler = data[0].custom[0].seat[data[0].custom[0].seat.length - 1];
-                console.log(dataHandler,message,"opts")
-                msg.unshift(
-                  { 
-                  type:"Bot", 
-                  opt:data[0].custom[0].type, 
-                  Blayout:true, 
-                  message:data[0].custom[0].text, 
-                  questionArray: data[0].custom[0].seat,
-                }
-                );
-              dispatch(addMessage({
-                array:msg,
-                length:msg.length
-            }))
-            }
+           
                 else{
                   const dataHandler = data[0].custom[0];
                   console.log(dataHandler,message,"opts")
@@ -461,6 +394,7 @@ function ChatScreen() {
                             seat={o.Seat}
                             parent={o.parent}
                             service={o.service}
+                            answer={o.answer}
                             />
                             :<UserChatBubble key={i} message={o.message}/>)
                         )

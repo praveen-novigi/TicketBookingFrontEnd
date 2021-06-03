@@ -453,7 +453,7 @@
   background: #FFFFFF ;
   padding: calc(1.60098*0.40rem) calc(4*0.230rem) calc(0.738916*0.40rem) calc(3.4667*0.230rem);
   opacity: 1;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-family: Roboto;
   justify-self: end;
 }
@@ -467,7 +467,7 @@
   background: #FFFFFF ;
   padding: calc(1.60098*0.40rem) calc(4*0.230rem) calc(4.738916*0.40rem) calc(3.4667*0.230rem);
   opacity: 1;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: Roboto;
 }
 .Usertime{
@@ -1051,7 +1051,6 @@ outline: none!important;
   align-self: center;
   justify-self: end;
   text-align: center;
-  margin: 1rem;
 }
 .slick-dots{
   grid-row: 2/3;
@@ -2066,7 +2065,7 @@ outline: none!important;
       background: #F5F5F5 ;
       padding: 1.60098vh 3.4667vw 0.738916vh 4vw;
       opacity: 1;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-family: Roboto;
     }
     .option{
@@ -2264,7 +2263,7 @@ outline: none!important;
       background: #FFFFFF ;
       padding: 1.60098vh 4vw 0.738916vh 3.4667vw;
       opacity: 1;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-family: Roboto;
       justify-self: end;
     }
@@ -2278,7 +2277,7 @@ outline: none!important;
       background: #FFFFFF ;
       padding: 1.60098vh 4vw 4.738916vh 3.4667vw;
       opacity: 1;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: Roboto;
     }
     .Usertime{
@@ -2863,7 +2862,6 @@ outline: none!important;
       align-self: center;
       justify-self: end;
       text-align: center;
-      margin: 1rem;
     }
     .slick-dots{
       grid-row: 2/3;

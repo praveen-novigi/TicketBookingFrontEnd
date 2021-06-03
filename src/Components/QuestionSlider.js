@@ -2,9 +2,7 @@ import React,{useEffect, useState} from 'react';
 import '../App.css';
 import next from '../assests/images/whiteNextArrow.svg';
 import prev from '../assests/images/whitePrevArrow.svg';
-import { useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux';
-import TicketListNew from './TicketListNew';
 import Slider from "react-slick";
 import QuestionList from './QuestionList';
 import QuestionBlock from './QuestionBlock';
@@ -23,7 +21,12 @@ function Arrow(props) {
 
   
  function QuestionSlider(props) {
-    const history = useHistory();
+  const topRef = React.useRef(null)
+
+  const scrollToTop = async() => {
+      await setViewAll(true)
+      topRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
     const flights = props.qarray
     const noOfFlights=3;
     const [totalFlights, setTotalFlights]=useState(flights.length);
@@ -60,7 +63,7 @@ function Arrow(props) {
         afterChange: (current, next) => setActiveSlide(next),
         className: 'center',
         // centerMode: true,
-        infinite: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         speed: 500,
@@ -72,7 +75,7 @@ function Arrow(props) {
         prevArrow:<Arrow type="prev" />,
         appendDots: dots => (
             <div>
-              <button key={dots} className="viewAllFlights" onClick={()=>setViewAll(true)}>View All</button>
+              <button key={dots} className="viewAllFlights" onClick={()=>scrollToTop()}>View All</button>
             </div>
           ),
           customPaging: i => (
@@ -86,22 +89,23 @@ function Arrow(props) {
         {list.map((li,i)=>{
                 return (
                     <div className="questionList">
-                    <QuestionList className="item" list={li}/>
+                    <QuestionList opt={props.opt} className="item" list={li}/>
                     </div>
                 )
             })}
         </Slider>)}
         {viewAll && (<>
-        <div className="questionList">
+        <div ref={topRef}/>
+        <div className="questionList" style={{margin: 'auto'}}>
           {
           flights.map((o,i)=>{return(<>
-              <QuestionBlock question={o.question} answer={o.answer}/>
+              <QuestionBlock opt={props.opt} question={o.question} answer={o.answer}/>
           </>)
           })
         }
         </div>
         <div>
-        <button className="viewAllFlights" onClick={()=>setViewAll(false)}>Reduce</button>
+        <button className="viewAllFlights" onClick={()=>setViewAll(false)}>View Less</button>
       </div>
       </>
         )

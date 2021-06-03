@@ -6,7 +6,7 @@ function QuestionList(props){
     return(
         props.list.map((o,i)=>{
             return (
-                <QuestionBlock question={o.question} answer={o.answer}/>
+                <QuestionBlock opt={props.opt} question={o.question} answer={o.answer}/>
                 )
         })
     )

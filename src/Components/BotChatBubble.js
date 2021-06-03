@@ -28,7 +28,6 @@ function BotChatBubble(props) {
     const msglength = useSelector(state => state.messageArray.length, shallowEqual);
     const [msgLength, setMsgLength] = useState(messageStack.length);
     React.useEffect(()=>{
-        console.log(messageStack,"messages");
         setMsgLength(messageStack.length)
     },[msglength])
     const dispatch = useDispatch();
@@ -134,34 +133,16 @@ function BotChatBubble(props) {
                 length:msg.length
             }))
             } else {
-                if(data[0].custom.length > 1){
-                    const dataHandler = data[0].custom[data[0].custom.length - 1];
-                    console.log(dataHandler,message,"opts")
-                    msg.unshift(
-                      { 
-                      type:"Bot", 
-                      opt:dataHandler.type, 
-                      Blayout:true, 
-                      message:dataHandler.text, 
-                      questionArray: data[0].custom,
-                      parent: hist,
-                    }
-                    );
-                  dispatch(addMessage({
-                    array:msg,
-                    length:msg.length
-                }))
-                }
-                else if(data[0].custom[0].refund_queries && data[0].custom[0].refund_queries.length > 1){
-                  const dataHandler = data[0].custom[0].refund_queries[data[0].custom[0].refund_queries.length - 1];
+                if(data[0].custom[0].qna && data[0].custom[0].qna.length > 0){
+                  const dataHandler = data[0].custom[0].qna[data[0].custom[0].qna.length - 1];
                   console.log(dataHandler,message,"opts")
                   msg.unshift(
                     { 
                     type:"Bot", 
-                    opt:data[0].custom[0].type, 
+                    opt:data[0].custom[0].type ? data[0].custom[0].type : dataHandler.type,
                     Blayout:true, 
-                    message:data[0].custom[0].text, 
-                    questionArray: data[0].custom[0].refund_queries,
+                    message:data[0].custom[0].text ? data[0].custom[0].text : dataHandler.text, 
+                    questionArray: data[0].custom[0].qna,
                     parent: hist,
                   }
                   );
@@ -170,60 +151,7 @@ function BotChatBubble(props) {
                   length:msg.length
               }))
               }
-              else if(data[0].custom[0].special_services && data[0].custom[0].special_services.length > 1){
-                const dataHandler = data[0].custom[0].special_services[data[0].custom[0].special_services.length - 1];
-                console.log(dataHandler,message,"opts")
-                msg.unshift(
-                  { 
-                  type:"Bot", 
-                  opt:data[0].custom[0].type, 
-                  Blayout:true, 
-                  message:data[0].custom[0].text, 
-                  questionArray: data[0].custom[0].special_services,
-                  parent: hist,
-                }
-                );
-              dispatch(addMessage({
-                array:msg,
-                length:msg.length
-            }))
-            }
-            else if(data[0].custom[0].general_queries && data[0].custom[0].general_queries.length > 1){
-              const dataHandler = data[0].custom[0].general_queries[data[0].custom[0].general_queries.length - 1];
-              console.log(dataHandler,message,"opts")
-              msg.unshift(
-                { 
-                type:"Bot", 
-                opt:data[0].custom[0].type, 
-                Blayout:true, 
-                message:data[0].custom[0].text, 
-                questionArray: data[0].custom[0].general_queries,
-                parent: hist,
-              }
-              );
-            dispatch(addMessage({
-              array:msg,
-              length:msg.length
-          }))
-          }
-              else if(data[0].custom[0].seat && data[0].custom[0].seat.length > 1){
-                const dataHandler = data[0].custom[0].seat[data[0].custom[0].seat.length - 1];
-                console.log(dataHandler,message,"opts")
-                msg.unshift(
-                  { 
-                  type:"Bot", 
-                  opt:data[0].custom[0].type, 
-                  Blayout:true, 
-                  message:data[0].custom[0].text, 
-                  questionArray: data[0].custom[0].seat,
-                  parent: hist,
-                }
-                );
-              dispatch(addMessage({
-                array:msg,
-                length:msg.length
-            }))
-            }
+             
                 else{
                   const dataHandler = data[0].custom[0];
                   console.log(dataHandler,message,"opts")
@@ -262,12 +190,14 @@ function BotChatBubble(props) {
         <div className="botDPGrid">
             <img src={Bot} className="BotDP"/>
         </div>
-        {(props.message || props.contact || props.link) &&
-        (<div className="BotchatBubble" style={props.opt === "1" ?{width: "46.66vw"}:{}}>
-            {props.message && typeof(props.message) === "string" ? props.message : props.message.map((m,i)=>(<>
+        {(props.message || props.contact || props.link  || props.answer) &&
+        (<div className="BotchatBubble" 
+        style={props.opt !== null && props.opt === "1" ?{width: "46.66vw"}:{}}
+        >
+            {props.message && (typeof(props.message) === "string" ? props.message : props.message.map((m,i)=>(<>
             <p key={i}>{m}</p>
             
-            </>))}
+            </>)))}
             {props.contact !== undefined ? (<div>
             <br/>
             <hr style={{border: "dotted 1px #ff0100"}}/>
@@ -278,6 +208,70 @@ function BotChatBubble(props) {
             <br/>
             Link : <a  style={{color:"#ff0100", fontWeight:"bold", marginTop: '1rem'}} href={`${props.link}`}>{` ${props.link}`}</a>
             <br/></>)}</div>):""}
+            {props.answer && (
+              (<div>
+                <div>
+                    {props.answer.type === "text" && props.answer.answer}
+                    {props.answer.type === "textArray" && props.answer.answer && props.answer.answer.length > 1 && 
+                    props.answer.answer.map((o,i)=>{
+                        return(
+                            <>
+                            {o}
+                            <br/>
+                            <br/>
+                            </>
+                        )
+                    })
+                    }
+                    {props.answer.type === "objectArray" && (
+                        <ul className="fareMessageList">
+                        {props.answer.arr.map((m,i) => <><li className="fareMessage" key={i}>
+                            {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                            {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                            {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                            </li></>)}
+                        
+                      </ul>
+                    )}
+                    {props.answer.type === "allObjectArray" && (<>
+                        {props.answer.saver && (<>
+                          Tru Saver 
+                        <ul className="fareMessageList">
+                        {props.answer.saver.map((m,i) => <><li className="fareMessage" key={i}>
+                            {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                            {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
+                            {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                            </li></>)}
+                        
+                      </ul>
+                      </>)}
+                      {props.answer.classic && (<>
+                      Tru Classic
+                      <ul className="fareMessageList">
+                        {props.answer.classic.map((m,i) => <><li className="fareMessage" key={i}>
+                            {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                            {m.text &&(`${m.text}`)}
+                            {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                            </li></>)}
+                        
+                      </ul>
+                      </>)}
+                      {props.answer.max && (<>
+                      Tru Max
+                      <ul className="fareMessageList">
+                        {props.answer.max.map((m,i) => <><li className="fareMessage" key={i}>
+                            {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
+                            {m.text &&(`${m.text}`)}
+                            {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
+                            </li></>)}
+                        
+                      </ul>
+                      </>)}
+                      </>
+                    )}
+                </div>
+            </div>)
+            )}
         </div>)}
         
         {/* Extra Bot Feature */}
@@ -617,7 +611,7 @@ function BotChatBubble(props) {
         <div className="bigOption">
           {props.opt === "cancellationoptions" && (
             <>
-            {props.qarray && props.qarray.length > 0 && (<QuestionSlider qarray={props.qarray}/>)}
+            {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
             {props.options && props.options.length > 0 && (<div className="options">
               {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
             </div>)}
@@ -625,7 +619,7 @@ function BotChatBubble(props) {
           )}
           {props.opt === "seatoptions" && (
             <>
-            {props.qarray && props.qarray.length > 0 && (<QuestionSlider qarray={props.qarray}/>)}
+            {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
             {props.options && props.options.length > 0 && (<div className="options">
               {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
             </div>)}
@@ -633,7 +627,7 @@ function BotChatBubble(props) {
           )}
           {props.opt === "baggageoptions" && (
             <>
-            {props.qarray && props.qarray.length > 0 && (<QuestionSlider qarray={props.qarray}/>)}
+            {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
             {props.options && props.options.length > 0 && (<div className="options">
               {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
             </div>)}
@@ -641,7 +635,7 @@ function BotChatBubble(props) {
           )}
           {props.opt === "specialservices" && (
            <>
-           {props.qarray && props.qarray.length > 0 && (<QuestionSlider qarray={props.qarray}/>)}
+           {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
            {props.options && props.options.length > 0 && (<div className="options">
              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
            </div>)}
@@ -649,7 +643,7 @@ function BotChatBubble(props) {
           )}
           {props.opt === "refundfaqoptions" && (
            <>
-           {props.qarray && props.qarray.length > 0 && (<QuestionSlider qarray={props.qarray}/>)}
+           {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
            {props.options && props.options.length > 0 && (<div className="options">
              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
            </div>)}
@@ -657,7 +651,7 @@ function BotChatBubble(props) {
           )}
           {props.opt === "generaloptions" && (
            <>
-           {props.qarray && props.qarray.length > 0 && (<QuestionSlider qarray={props.qarray}/>)}
+           {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
            {props.options && props.options.length > 0 && (<div className="options">
              {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
            </div>)}

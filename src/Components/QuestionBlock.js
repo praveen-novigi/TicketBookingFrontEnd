@@ -1,5 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import '../App.css';
+import {addMessage} from '../Redux/actions/messageArrayActions';
+import {useSelector, shallowEqual} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 function QuestionBlock(props){
     const [type, setType]= useState()
@@ -7,7 +10,30 @@ function QuestionBlock(props){
     const [classic, setclassic] = useState()
     const [max, setmax] = useState()
     const [arr, setarr] = useState()
-    const [toggle, setToggle] = useState(false)
+    const Service = useSelector(state => state.todo);
+    const messageStack = useSelector(state => state.messageArray.array, shallowEqual);
+    const dispatch = useDispatch();
+    const sendMessage=(message)=>{
+        const msg = messageStack;
+        if(message !== "")
+        {
+        msg.unshift( {type:"User", message:message})
+                  msg.unshift(
+                    { 
+                    type:"Bot", 
+                    opt:null, 
+                    Blayout:false, 
+                    answer:{type, answer:props.answer, arr, saver, classic, max},
+                    parent: props.opt,
+                    service: Service.service,
+                  }
+                  );
+                dispatch(addMessage({
+                  array:msg,
+                  length:msg.length
+              }))
+        }
+    }
     useEffect(()=>{
         if(typeof(props.answer) === "string"){
         setType("text");
@@ -29,78 +55,8 @@ function QuestionBlock(props){
     }},[])
     return(
         <>
-            <div style={{padding: '2%', textAlign: 'left',  display: 'grid', gridTemplateColumns : '1fr 19fr', cursor: 'pointer'}} onClick={()=>setToggle(!toggle)}>
-                <div >{toggle?"<":">"}</div>
-                <div>
-                    <div style={{ display: 'grid', gridTemplateColumns : '1fr 19fr'}}>
-                        <div>Q. </div>
+            <div style={{padding: '2%', cursor: 'pointer', minHeight: '2.5rem', color: '#ff0100', fontSize: '0.9rem'}} onClick={()=>sendMessage(props.question)}>
                         <div>{props.question}</div>
-                    </div>
-                    <br/>
-                    {toggle && (<div style={{ display: 'grid', gridTemplateColumns : '1fr 19fr'}}>
-                        <div>A. </div>
-                        <div>
-                            {type === "text" && props.answer}
-                            {type === "textArray" && props.answer && props.answer.length > 1 && 
-                            props.answer.map((o,i)=>{
-                                return(
-                                    <>
-                                    {o}
-                                    <br/>
-                                    <br/>
-                                    </>
-                                )
-                            })
-                            }
-                            {type === "objectArray" && (
-                                <ul className="fareMessageList">
-                                {arr.map((m,i) => <><li className="fareMessage" key={i}>
-                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
-                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
-                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
-                                    </li></>)}
-                                
-                              </ul>
-                            )}
-                            {type === "allObjectArray" && (<>
-                            Tru Saver 
-                                {saver && (<>
-                                <ul className="fareMessageList">
-                                {saver.map((m,i) => <><li className="fareMessage" key={i}>
-                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
-                                    {m.Charges && m["Row No"] &&(`${m.Charges} for ${m["Row No"]}`)}
-                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
-                                    </li></>)}
-                                
-                              </ul>
-                              </>)}
-                              {classic && (<>
-                              Tru Classic
-                              <ul className="fareMessageList">
-                                {classic.map((m,i) => <><li className="fareMessage" key={i}>
-                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
-                                    {m.text &&(`${m.text}`)}
-                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
-                                    </li></>)}
-                                
-                              </ul>
-                              </>)}
-                              {max && (<>
-                              Tru Max
-                              <ul className="fareMessageList">
-                                {max.map((m,i) => <><li className="fareMessage" key={i}>
-                                    {m.Charges && m["Prior to Depature"] &&(`${m.Charges} if cancelled ${m["Prior to Depature"]} prior to flight departure`)}
-                                    {m.text &&(`${m.text}`)}
-                                    {m.Size && m.Weight &&(`Dimension-${m.Size}; Weight-${m.Weight}`)}
-                                    </li></>)}
-                                
-                              </ul>
-                              </>)}
-                              </>
-                            )}
-                        </div>
-                    </div>)}
-                </div>
             </div>
             <hr/>
         </>
