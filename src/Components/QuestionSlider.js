@@ -28,7 +28,7 @@ function Arrow(props) {
       topRef.current?.scrollIntoView({ behavior: "smooth" })
   }
     const flights = props.qarray
-    const noOfFlights=3;
+    const noOfFlights=4;
     const [totalFlights, setTotalFlights]=useState(flights.length);
     const [viewAll, setViewAll]=useState(false);
     const [lastPage, setLastPage]=useState(flights.length % noOfFlights);
@@ -82,8 +82,12 @@ function Arrow(props) {
             i+1
           )
       };
+      useEffect(()=>{
+      topRef.current?.scrollIntoView({ behavior: "smooth" })
+      },[])
     return (
         <div>
+        <div ref={topRef}/>
         <div className="ticketSlider">
         {!viewAll && (<Slider {...settings}>
         {list.map((li,i)=>{

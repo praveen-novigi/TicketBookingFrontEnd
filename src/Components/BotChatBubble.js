@@ -657,9 +657,17 @@ function BotChatBubble(props) {
            </div>)}
            </>
           )}
+          {props.opt === "webcheckinoptions" && (
+           <>
+           {props.qarray && props.qarray.length > 0 && (<QuestionSlider opt={props.opt} qarray={props.qarray}/>)}
+           {props.options && props.options.length > 0 && (<div className="options">
+             {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
+           </div>)}
+           </>
+          )}
           {props.opt === "11" &&(<TicketSlider/>)}
           {props.opt === "14" &&(<DoubleTicketSlider/>)}
-          { props.service === 'FAQs' || props.opt === "cancellationoptions" || props.opt === "seatoptions" || props.opt === "baggageoptions" || props.opt === "specialservices" || props.opt === "refundfaqoptions" || props.opt === "generaloptions" || props.opt === "refundfaqoptions" ? (<button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>):""}
+          { props.service === 'FAQs' || props.opt === "cancellationoptions"  || props.opt === "webcheckinoptions" || props.opt === "seatoptions" || props.opt === "baggageoptions" || props.opt === "specialservices" || props.opt === "refundfaqoptions" || props.opt === "generaloptions" || props.opt === "refundfaqoptions" ? (<button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>):""}
            <p className="Bottime">16:54</p>
         </div>
         }
