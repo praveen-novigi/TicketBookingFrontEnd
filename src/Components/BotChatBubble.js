@@ -124,7 +124,6 @@ function BotChatBubble(props) {
         msg.unshift( {type:"User", message:message})
         userRequest(message).then((data) => {
             if (data)if(data[0].custom === undefined) {
-              console.log(data[0].text, "err");
               msg.unshift(
                 { type:"Bot", message:data[0].text,
                 parent: hist});
@@ -190,7 +189,7 @@ function BotChatBubble(props) {
         <div className="botDPGrid">
             <img src={Bot} className="BotDP"/>
         </div>
-        {(props.message || props.contact || props.link  || props.answer) &&
+        {(props.message || props.contact || props.link  || props.answer ) &&
         (<div className="BotchatBubble" 
         style={props.opt !== null && props.opt === "1" ?{width: "46.66vw"}:{}}
         >
@@ -212,6 +211,7 @@ function BotChatBubble(props) {
               (<div>
                 <div>
                     {props.answer.type === "text" && props.answer.answer}
+                    {props.answer.type === "object" && props.answer.answer[0].custom[0].text}
                     {props.answer.type === "textArray" && props.answer.answer && props.answer.answer.length > 1 && 
                     props.answer.answer.map((o,i)=>{
                         return(
@@ -508,6 +508,11 @@ function BotChatBubble(props) {
             </>
           )}
 
+          { props.answer && props.answer.type && props.answer.type === "object" && (
+            <div className="options">
+              {props.answer.answer[0].custom[0].buttons.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
+            </div>
+          )}
           {/* Re-Issuance Options */}
 
           {props.opt === "changefeeoptions" && (
@@ -515,6 +520,7 @@ function BotChatBubble(props) {
               {props.options.map((m,i) => <div className="botOption" onClick={()=>{sendMessage(m.payload,props.opt)}} key={i}>{m.title}</div>)}
             </div>
           )}
+          
           
           {props.opt === "reissuance_standard" && props.reissuance && (
             <>
