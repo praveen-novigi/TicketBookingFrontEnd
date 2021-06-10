@@ -236,6 +236,7 @@
   align-self: center;
 }
 .BotchatBubble{
+  margin-top:1rem;
   width: calc(58.4667*0.230rem);
   height: max-content;
   grid-column: 2/3;
@@ -2064,6 +2065,7 @@ outline: none!important;
       align-self: center;
     }
     .BotchatBubble{
+      margin-top:1rem;
       width: 58.4667vw;
       height: max-content;
       grid-column: 2/3;

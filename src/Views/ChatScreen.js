@@ -429,7 +429,7 @@ function ChatScreen() {
             style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)',textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}:{textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
         </div>
         </>):""
-        }<div className="popLogoDiv" style={popUp?{}:{display: 'grid',gridTemplateColumns: '1fr 2fr', alignItems: 'center'}}><img className="popLogo" src={popUp?close:Bot} onClick={()=>{setpopUp(!popUp)}}/> {!popUp && ('Ask TruBuddy')}</div></>)}
+        }<div className="popLogoDiv" style={popUp?{}:{display: 'grid',gridTemplateColumns: '1fr 2fr', alignItems: 'center'}}  onClick={()=>{setpopUp(!popUp)}}><img className="popLogo" src={popUp?close:Bot}/> {!popUp && ('Ask TruBuddy')}</div></>)}
     </div>
   );
 }
