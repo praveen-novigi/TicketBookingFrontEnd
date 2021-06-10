@@ -61,7 +61,7 @@ function QuestionBlock(props){
     },[])
     return(
         <>
-            <div style={{padding: '2%', cursor: 'pointer', minHeight: '2.5rem', color: '#ff0100', fontSize: '0.9rem', display: 'grid', alignContent:'center'}} onClick={()=>sendMessage(props.question)}>
+            <div style={{ cursor: 'pointer', minHeight: '2rem', color: '#ff0100', fontSize: '0.9rem', display: 'grid', alignContent:'center'}} onClick={()=>sendMessage(props.question)}>
                         <div>{props.question}</div>
             </div>
             <hr className="questionDivider"/>

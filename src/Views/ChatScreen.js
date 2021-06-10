@@ -238,7 +238,7 @@ function ChatScreen() {
     <div className="container">
         {showMenu && <>
         <div className="landBG" 
-        style={popUp?{backgroundColor:'#e6213e'}:{}}>
+        style={popUp?{backgroundColor:'#ff0100'}:{}}>
             {/* <img src={BG1} style={{width:"100vw"}}/> */}
         </div>
         <div className="landOPAC"/>
@@ -311,7 +311,7 @@ function ChatScreen() {
         </div></>) : 
         (<>
         <div className="landBG" 
-        style={popUp?{backgroundColor:'#e6213e'}:{}}
+        style={popUp?{backgroundColor:'#ff0100'}:{}}
         // style={popUp?{borderTop: '0.25vh solid rgb(100 97 97 / 27%)', borderBottom: '0.25vh solid rgb(100 97 97 / 27%)',borderRight: '0.5vw solid rgb(100 97 97 / 27%)',borderLeft: '0.5vw solid rgb(100 97 97 / 27%)'}:{}}
         >
             {/* <img src={popUp?BG2:''} style={{width:"122vw"}}/> */}
@@ -429,7 +429,7 @@ function ChatScreen() {
             style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)',textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}:{textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
         </div>
         </>):""
-        }<div className="popLogoDiv" style={popUp?{}:{display: 'grid',gridTemplateColumns: '1fr 2fr', alignItems: 'center'}}  onClick={()=>{setpopUp(!popUp)}}><img className="popLogo" src={popUp?close:Bot}/> {!popUp && ('Ask TruBuddy')}</div></>)}
+        }<div className="popLogoDiv" style={popUp?{}:{display: 'grid',gridTemplateColumns: '1fr 2fr', alignItems: 'center', right: '1rem', bottom: '1.5rem', boxShadow: '0px 0px 10px red', padding: '0.5rem', borderRadius:'6px', fontWeight:'bold'}}  onClick={()=>{setpopUp(!popUp)}}><img className="popLogo" src={popUp?close:Bot}/> {!popUp && ('Ask TruBuddy')}</div></>)}
     </div>
   );
 }

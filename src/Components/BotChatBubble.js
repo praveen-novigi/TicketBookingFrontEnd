@@ -308,7 +308,7 @@ function BotChatBubble(props) {
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Classic Seats</p>
                 <ul className="fareMessageList">
-                  {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li></>)}
+                  {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                 </ul>
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map",props.opt)}}>View Seat Map</button>}
@@ -319,7 +319,7 @@ function BotChatBubble(props) {
             <div className="fareDetails">
                 <p className="fareDetailsHeading">Tru Corporate Seats</p>
                 <ul className="fareMessageList">
-                  {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} for {m["Row No"]}</li></>)}
+                  {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                 </ul>
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map",props.opt)}}>View Seat Map</button>}
@@ -612,7 +612,7 @@ function BotChatBubble(props) {
           {props.opt === "13" &&(<TruJetSeatMap/>)}
           {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" && props.service === "FAQs"?
           <button className="goBackButton" onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>:""}
-        {props.Blayout === false ?<p className="Bottime">16:54</p>:""}
+        
         </div>
         {props.Blayout === true &&
         <div className="bigOption">
@@ -675,7 +675,7 @@ function BotChatBubble(props) {
           {props.opt === "11" &&(<TicketSlider/>)}
           {props.opt === "14" &&(<DoubleTicketSlider/>)}
           { props.service === 'FAQs' || props.opt === "cancellationoptions"  || props.opt === "webcheckinoptions" || props.opt === "seatoptions" || props.opt === "baggageoptions" || props.opt === "specialservices" || props.opt === "refundfaqoptions" || props.opt === "generaloptions" || props.opt === "refundfaqoptions" ? (<button className="goBackButton" style={{width:"calc(80.46667*0.230rem)"}} onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>):""}
-           <p className="Bottime">16:54</p>
+           
         </div>
         }
     </div>
