@@ -113,6 +113,7 @@ function BotChatBubble(props) {
             Blayout:false,
             message:"Here is your Seat Map",
             service: Service.service,
+            parent: hist,
           });
         dispatch(addMessage({
             array:msg,

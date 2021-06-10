@@ -21,7 +21,7 @@ function QuestionBlock(props){
                   msg.unshift(
                     { 
                     type:"Bot", 
-                    opt:props.answer && props.answer.custom && props.answer.custom[0] && props.answer.custom[0].type? `${props.answer.custom[0].type}QnA` :null, 
+                    opt:props.answer && props.answer.length > 0 && props.answer[0] && props.answer[0].custom && props.answer[0].custom[0] && props.answer[0].custom[0].type? `${props.answer[0].custom[0].type}QnA` :null, 
                     Blayout:false, 
                     answer:{type, answer:props.answer, arr, saver, classic, max},
                     parent: props.opt,
@@ -61,10 +61,10 @@ function QuestionBlock(props){
     },[])
     return(
         <>
-            <div style={{padding: '2%', cursor: 'pointer', minHeight: '2.5rem', color: '#ff0100', fontSize: '0.9rem'}} onClick={()=>sendMessage(props.question)}>
+            <div style={{padding: '2%', cursor: 'pointer', minHeight: '2.5rem', color: '#ff0100', fontSize: '0.9rem', display: 'grid', alignContent:'center'}} onClick={()=>sendMessage(props.question)}>
                         <div>{props.question}</div>
             </div>
-            <hr/>
+            <hr className="questionDivider"/>
         </>
     )
 }

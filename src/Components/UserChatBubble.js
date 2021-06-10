@@ -7,7 +7,7 @@ function UserChatBubble(props) {
     <div className="UserchatGrid">
         {/* Chat Box */}
         <div className="UserDPGrid">
-            <img src={User} className="UserDP"/>
+            {/* <img src={User} className="UserDP"/> */}
         </div>
         <div className="UserchatBubble">
         {props.message}

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../App.css';
 import menu from '../assests/images/menu.svg';
+import trulogo from '../assests/images/TrujetLogo.svg';
 import homeActive from '../assests/images/homeActive.svg';
 import settings from '../assests/images/settings.svg';
 import BG2 from '../assests/images/BG2.svg';
@@ -35,6 +36,7 @@ import activeCheckIn from '../assests/images/activeCheckIn.svg';
 import activeLogout from '../assests/images/activeLogout.svg';
 import activeHelp from '../assests/images/activeHelp.svg';
 import logo from '../assests/images/landLOGO.svg';
+import close from '../assests/images/close.png';
 import {userRequest} from '../helper/Backend.js';
 import {useDispatch} from 'react-redux';
 import {addMessage} from '../Redux/actions/messageArrayActions';
@@ -138,7 +140,7 @@ function ChatScreen() {
                             length:msg.length
                         }))
             } else {
-              if(data[0].custom[0].qna && data[0].custom[0].qna.length > 0){
+              if(data && data.length > 0 && data[0] && data[0].custom && data[0].custom.length > 0 && data[0].custom[0] && data[0].custom[0].qna && data[0].custom[0].qna.length > 0){
                 const dataHandler = data[0].custom[0].qna[data[0].custom[0].qna.length - 1];
                 console.log(dataHandler,message,"opts")
                 msg.unshift(
@@ -191,7 +193,7 @@ function ChatScreen() {
     }
     const handleTyping =debounce(() => {
         setIsTyping(false);
-      },5000);
+      },8000);
     const handleChange=(e)=>{
         setMessage(e.target.value);
         setIsTyping(true);
@@ -235,8 +237,9 @@ function ChatScreen() {
   return (
     <div className="container">
         {showMenu && <>
-        <div className="landBG">
-            <img src={BG1} style={{width:"100vw"}}/>
+        <div className="landBG" 
+        style={popUp?{backgroundColor:'#e6213e'}:{}}>
+            {/* <img src={BG1} style={{width:"100vw"}}/> */}
         </div>
         <div className="landOPAC"/>
         </>}
@@ -308,16 +311,20 @@ function ChatScreen() {
         </div></>) : 
         (<>
         <div className="landBG" 
+        style={popUp?{backgroundColor:'#e6213e'}:{}}
         // style={popUp?{borderTop: '0.25vh solid rgb(100 97 97 / 27%)', borderBottom: '0.25vh solid rgb(100 97 97 / 27%)',borderRight: '0.5vw solid rgb(100 97 97 / 27%)',borderLeft: '0.5vw solid rgb(100 97 97 / 27%)'}:{}}
         >
-            <img src={popUp?BG2:''} style={{width:"122vw"}}/>
+            {/* <img src={popUp?BG2:''} style={{width:"122vw"}}/> */}
         </div>
         <div className="landOPAC"/>
         {popUp?
         (<>
         <div className="landContentBox">
             <div className="topBar">
-                {/* <img src={menu} className="menu" onClick={()=>{setShowMenu(true)}}/> */}
+                <img src={trulogo} className="menu"
+                style={{borderRadius:"50%"}} 
+                // onClick={()=>{setShowMenu(true)}}
+                />
                 <div className="topBarBox">
                     <div className="buttonBox">
                         <img src={homeActive} className='home' onClick={goHome}/>
@@ -422,7 +429,7 @@ function ChatScreen() {
             style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)',textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}:{textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
         </div>
         </>):""
-        }<img className="popLogo" src={Bot} onClick={()=>{setpopUp(!popUp)}}/></>)}
+        }<div className="popLogoDiv" style={popUp?{}:{display: 'grid',gridTemplateColumns: '1fr 2fr', alignItems: 'center'}}><img className="popLogo" src={popUp?close:Bot} onClick={()=>{setpopUp(!popUp)}}/> {!popUp && ('Ask TruBuddy')}</div></>)}
     </div>
   );
 }
