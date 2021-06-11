@@ -184,6 +184,36 @@ function BotChatBubble(props) {
           });
         }
     }
+    const goHome=(e)=>{
+      e.preventDefault()
+      const msg = messageStack;
+            msg.unshift(
+              {
+                      type:"Bot", 
+                      opt:"initialoptions", 
+                      Blayout:false, 
+                      message:[
+                        "Hi! Welcome to TruJet. We are #Trulyfriendly.",
+                        "I am your AI powered assistant and I am glad to assist you."
+                    ], 
+                      menu:[{
+                        "payload": "FAQs",
+                        "title": "FAQs"
+                    }], 
+                      Cancellation:undefined,
+                      ReIssuance:undefined,
+                      BaggageDetails: undefined,
+                      seat_Tru_Standard : undefined,
+                      seat_Tru_Classic : undefined,
+                      seat_Tru_Max_Corporate : undefined,
+                      Fare: undefined,
+                      Seat:undefined
+              });
+            dispatch(addMessage({
+              array:msg,
+              length:msg.length
+          }))
+      }
   return (
     <div className="BotchatGrid">
         {/* Chat Box */}
@@ -612,6 +642,8 @@ function BotChatBubble(props) {
           {props.opt === "13" &&(<TruJetSeatMap/>)}
           {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" && props.service === "FAQs"?
           <button className="goBackButton" onClick={()=>{sendMessage("Go Back",props.opt)}}>Go Back</button>:""}
+          {props.Blayout === false && props.opt !== "faqoptions" && props.opt !== "initialoptions" && props.service !== "FAQs"?
+          <button className="goBackButton" onClick={goHome}>Go Back</button>:""}
         
         </div>
         {props.Blayout === true &&

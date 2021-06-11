@@ -157,12 +157,12 @@
 }
 .menu{
   /* width: calc(7.2*0.230rem); */
-  width: calc(17.2*0.230rem);
+  width: calc(30*0.230rem);
   grid-column: 1/2;
   align-self: center;
   /* margin-left: calc(10.16*0.230rem); */
   /* margin-right: calc(45.84*0.230rem); */
-  margin-right: calc(60.84*0.230rem);
+  margin-right: calc(45*0.230rem);
 }
 .topBarBox{
   width: calc(20.733*0.230rem);
@@ -430,7 +430,8 @@
   margin-left: calc(15.7*0.230rem);
   /* width:66.266vw; */
   display: grid;
-  grid-template-columns: calc(54.667*0.230rem) calc(10.133*0.230rem);
+  /* grid-template-columns: calc(54.667*0.230rem) calc(10.133*0.230rem); */
+  grid-template-columns: 1fr;
   margin-bottom: calc(8.47783251*0.230rem);
 }
 .UserchatGridTyping{
@@ -1979,12 +1980,12 @@ outline: none!important;
     }
     .menu{
       /* width: 7.2vw; */
-      width: 17.2vw;
+      width:30vw;
       grid-column: 1/2;
       align-self: center;
       /* margin-left: 10.16vw;
       margin-right: 45.84vw; */
-      margin-right: 60.84vw;
+      margin-right: 45vw;
     }
     .topBarBox{
       width: 20.733vw;
@@ -2246,7 +2247,8 @@ outline: none!important;
       margin-left: 15.7vw;
       /* width:66.266vw; */
       display: grid;
-      grid-template-columns: 54.667vw 10.133vw;
+      /* grid-template-columns: 54.667vw 10.133vw; */
+      grid-template-columns: 1fr;
       margin-bottom: 1.47783251vh;
     }
     .UserchatGridTyping{

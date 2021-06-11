@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../App.css';
 import menu from '../assests/images/menu.svg';
-import trulogo from '../assests/images/TrujetLogo.svg';
+import trulogo from '../assests/images/logo.png';
 import homeActive from '../assests/images/homeActive.svg';
 import settings from '../assests/images/settings.svg';
 import BG2 from '../assests/images/BG2.svg';
@@ -322,9 +322,9 @@ function ChatScreen() {
         <div className="landContentBox">
             <div className="topBar">
                 <img src={trulogo} className="menu"
-                style={{borderRadius:"50%"}} 
                 // onClick={()=>{setShowMenu(true)}}
                 />
+                {/* #Ask TruBuddy */}
                 <div className="topBarBox">
                     <div className="buttonBox">
                         <img src={homeActive} className='home' onClick={goHome}/>

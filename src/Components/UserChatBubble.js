@@ -13,7 +13,7 @@ function UserChatBubble(props) {
         {props.message}
         </div>
         
-        <p className="Usertime">16:54</p>
+        {/* <p className="Usertime">16:54</p> */}
     </div>
   );
 }
