@@ -201,7 +201,7 @@
   background-color: white;
   z-index: 4;
   height: calc(69.50246305*0.40rem);
-  padding-left: calc(9.6*0.230rem);
+  padding-left: calc(4.6*0.230rem);
   margin-top: calc(2.463054*0.40rem);
   overflow: hidden;
 }
@@ -2025,7 +2025,7 @@ outline: none!important;
       z-index: 4;
       /* height: 69.50246305vh; temporarily changed due to UI issues*/
       height: 86.3vh;
-      padding-left: 9.6vw;
+      padding-left: 4.6vw;
       /* margin-top: 2.463054vh; temporarily changed due to UI issues */
       margin-top:1vh;
       padding-top: 0.15vh;
