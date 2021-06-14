@@ -236,7 +236,7 @@ function BotChatBubble(props) {
             <br/>
             {props.link&&(<><hr style={{border: "dotted 1px #ff0100", marginTop: '1rem'}}/>
             <br/>
-            Link : <a  style={{color:"#ff0100", fontWeight:"bold", marginTop: '1rem'}} href={`https://${props.link}`}>{` ${props.link}`}</a>
+            Link : <a  style={{color:"#ff0100", fontWeight:"bold", marginTop: '1rem'}} target="_blank" href={`https://${props.link}`}>{` ${props.link}`}</a>
             <br/></>)}</div>):""}
             {props.answer && (
               (<div>
