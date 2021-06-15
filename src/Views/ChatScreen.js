@@ -452,7 +452,7 @@ function ChatScreen() {
                         </div>
                     </div>
         <div 
-            style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)',textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}:{textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}}>Powered by <a href="www.novigi.io">novigi.io</a></div>
+            style={popUp?{borderLeft: '0.5vw solid rgb(100 97 97 / 27%)', borderRight: '0.5vw solid rgb(100 97 97 / 27%)',textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}:{textAlign: 'center', fontSize: '10px', backgroundColor: 'white'}}>Powered by <a href="https://www.novigi.io"  target="_blank">novigi.io</a></div>
         </div>
         </>):""
         }<div className="popLogoDiv" style={popUp?{}:{display: 'grid',gridTemplateColumns: '1fr 2fr', alignItems: 'center', right: '1rem', bottom: '1.5rem', boxShadow: '0px 0px 10px red', padding: '0.5rem', borderRadius:'6px', fontWeight:'bold'}}  onClick={()=>{setpopUp(!popUp)}}><img className="popLogo" src={popUp?close:Bot}/> {!popUp && ('Ask TruBuddy')}</div></>)}
