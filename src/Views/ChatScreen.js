@@ -345,7 +345,6 @@ function ChatScreen() {
                 //         Service.selected ?{height:"80.6798vh"}:{} temporarily changed due to ui issues
                 //         }
                         >
-                            <div ref={messagesEndRef} />
                     {isTyping && <TypingBubble/>}
                     {/* {Service.selected &&(<>
                     <BotChatBubble opt="0" Blayout={false} message="What else may I assist you with further?"/>
@@ -377,11 +376,38 @@ function ChatScreen() {
                     <BotChatBubble opt="2" Blayout={false} message="Which flight do you have your query with?"/>
                     <UserChatBubble message="I want to enquire about a flight"/></>)}
                     <BotChatBubble opt="initialoptions" Blayout={false} message="Hi Avni, What can I help you with?"/> */}
+                    {(messageStack[0].type==="Bot"?<BotChatBubble
+                            key={0}
+                            opt={messageStack[0].opt} 
+                            options={messageStack[0].menu}
+                            qarray={messageStack[0].questionArray} 
+                            Blayout={messageStack[0].Blayout} 
+                            message={messageStack[0].message} 
+                            cancellation={messageStack[0].Cancellation} 
+                            reissuance={messageStack[0].ReIssuance} 
+                            baggage={messageStack[0].BaggageDetails}
+                            standard_seat={messageStack[0].seat_Tru_Standard}
+                            classic_seat={messageStack[0].seat_Tru_Classic}
+                            max_corp_seat={messageStack[0].seat_Tru_Max_Corporate}
+                            contact={messageStack[0].contact}
+                            link={messageStack[0].link}
+                            seatMap={(messageStack[0].opt === "standard_seat" || messageStack[0].opt === "classic_seat" || messageStack[0].opt === "corporate_seat")?true:false}
+                            fare={messageStack[0].Fare}
+                            seat={messageStack[0].Seat}
+                            parent={messageStack[0].parent}
+                            service={messageStack[0].service}
+                            answer={messageStack[0].answer}
+                            />
+                            :<UserChatBubble key={0} message={messageStack[0].message}/>)}
+                            <div ref={messagesEndRef} />
                     
                     {
                         messageStack&&msgLength>0&&messageStack.map((o,i)=>
                         
-                            (o.type==="Bot"?<BotChatBubble
+                            {
+                            if (i !== 0)
+                            {
+                            return(o.type==="Bot"?<BotChatBubble
                             key={i}
                             opt={o.opt} 
                             options={o.menu}
@@ -403,7 +429,7 @@ function ChatScreen() {
                             service={o.service}
                             answer={o.answer}
                             />
-                            :<UserChatBubble key={i} message={o.message}/>)
+                            :<UserChatBubble key={i} message={o.message}/>)}}
                         )
                     }
                 </div>
