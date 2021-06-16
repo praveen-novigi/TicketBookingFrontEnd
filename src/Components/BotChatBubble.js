@@ -347,7 +347,7 @@ function BotChatBubble(props) {
           {props.opt === "corporate_seat" && props.seat && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Tru Corporate Seats</p>
+                <p className="fareDetailsHeading">Tru Max Seats</p>
                 <ul className="fareMessageList">
                   {props.seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                 </ul>
@@ -366,7 +366,7 @@ function BotChatBubble(props) {
                 <ul className="fareMessageList">
                   {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                 </ul></>)}
-                {props.max_corp_seat &&(<><p className="fareDetailsHeading">Tru Corporate Seats</p>
+                {props.max_corp_seat &&(<><p className="fareDetailsHeading">Tru Max Seats</p>
                 <ul className="fareMessageList">
                   {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                 </ul></>)}
@@ -407,7 +407,7 @@ function BotChatBubble(props) {
           {props.opt === "tru_max_corp_fare" && props.fare && (
             <>
             <div className="fareDetails">
-                <p className="fareDetailsHeading">Tru Corporate Fare Charges</p>
+                <p className="fareDetailsHeading">Tru Max Fare Charges</p>
                 <ul className="fareMessageList">
                   {props.fare.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li></>)}
                 </ul>
@@ -426,7 +426,7 @@ function BotChatBubble(props) {
                 <ul className="fareMessageList">
                   {props.classic_seat && props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li></>)}
                 </ul>
-                <p className="fareDetailsHeading">Tru Max Corporate Fare Charges</p>
+                <p className="fareDetailsHeading">Tru Max Fare Charges</p>
                 <ul className="fareMessageList">
                   {props.max_corp_seat && props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.Particulars} : {m["Details"]}</li></>)}
                 </ul>
@@ -472,13 +472,12 @@ function BotChatBubble(props) {
                 <p className="fareDetailsHeading">Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
-                  <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   
                 </ul>
-                <p className="fareDetailsHeading">Cancellation Important Note</p>
+                {/* <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
-                </ul>
+                </ul> */}
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map",props.opt)}}>View Seat Map</button>}
             </>
@@ -489,13 +488,12 @@ function BotChatBubble(props) {
                 <p className="fareDetailsHeading">Cancellation Charges</p>
                 {props.cancellation&&(<ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
-                  <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   
                 </ul>)}
-                <p className="fareDetailsHeading">Cancellation Important Note</p>
+                {/* <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
-                </ul>
+                </ul> */}
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map",props.opt)}}>View Seat Map</button>}
             </>
@@ -506,13 +504,12 @@ function BotChatBubble(props) {
                 <p className="fareDetailsHeading">Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
-                  <li className="fareMessage">100% cancellation charges within 4 hours of the flight departure time.</li>
                   
                 </ul>
-                <p className="fareDetailsHeading">Cancellation Important Note</p>
+                {/* <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
-                </ul>
+                </ul> */}
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map",props.opt)}}>View Seat Map</button>}
             </>
@@ -530,7 +527,7 @@ function BotChatBubble(props) {
                   {props.classic_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                   
                 </ul></>)}
-                {props.max_corp_seat &&(<><p className="fareDetailsHeading"> TRU Max Corporate Cancellation Charges</p>
+                {props.max_corp_seat &&(<><p className="fareDetailsHeading"> TRU Max Cancellation Charges</p>
                 <ul className="fareMessageList">
                   {props.max_corp_seat.map((m,i) => <><li className="fareMessage" key={i}>{m.text}</li></>)}
                 </ul></>)}
@@ -620,7 +617,7 @@ function BotChatBubble(props) {
                   <li className="fareMessage">DOF stands for Difference Of Fare</li>
                   
                 </ul></>)}
-                {props.max_corp_seat &&(<><p className="fareDetailsHeading">Re-Issuance Max Corporate Charges</p>
+                {props.max_corp_seat &&(<><p className="fareDetailsHeading">Re-Issuance Max Charges</p>
                 <ul className="fareMessageList">
                   {props.max_corp_seat.map((m,i) => m.text !== undefined && <><li className="fareMessage" key={i}>{m["text"]}</li></>)}
                   
