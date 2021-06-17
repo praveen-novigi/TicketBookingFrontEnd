@@ -458,10 +458,10 @@ function BotChatBubble(props) {
                   {props.cancellation.map((m,i) => <><li className="fareMessage" key={i}>{m.Charges} if cancelled {m["Prior to Depature"]} prior to flight departure</li></>)}
                   
                 </ul>
-                <p className="fareDetailsHeading">Cancellation Important Note</p>
+                {/* <p className="fareDetailsHeading">Cancellation Important Note</p>
                 <ul className="fareMessageList">
                   <li className="fareMessage">Cancellation can be done before 1 Hr to the departure with Nil charges.</li>
-                </ul>
+                </ul> */}
             </div>
             {props.seatMap && <button className="seatMap" onClick={()=>{sendMessage("View Seat Map",props.opt)}}>View Seat Map</button>}
             </>
